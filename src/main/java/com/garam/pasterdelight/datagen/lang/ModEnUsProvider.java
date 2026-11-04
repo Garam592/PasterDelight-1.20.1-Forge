@@ -1,0 +1,18 @@
+package com.garam.pasterdelight.datagen.lang;
+
+import com.garam.pasterdelight.PasterDelight;
+import com.garam.pasterdelight.init.ModItems;
+import net.minecraft.data.PackOutput;
+import net.minecraftforge.common.data.LanguageProvider;
+
+public class ModEnUsProvider extends LanguageProvider {
+    public ModEnUsProvider(PackOutput packOutput)  {
+        super(packOutput, PasterDelight.MOD_ID, "en_us");
+    }
+    @Override
+    protected void addTranslations() {
+        add(ModItems.TITANIUM_KNIFE.get(),"Titanium Knife");
+
+        add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
+    }
+}

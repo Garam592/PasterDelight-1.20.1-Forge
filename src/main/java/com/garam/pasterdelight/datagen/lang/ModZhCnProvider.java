@@ -1,0 +1,20 @@
+package com.garam.pasterdelight.datagen.lang;
+
+import com.garam.pasterdelight.PasterDelight;
+import com.garam.pasterdelight.init.ModItems;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import net.minecraft.data.PackOutput;
+import net.minecraftforge.common.data.LanguageProvider;
+
+public class ModZhCnProvider extends LanguageProvider {
+    public ModZhCnProvider(PackOutput packOutput)  {
+        super(packOutput, PasterDelight.MOD_ID, "zh_cn");
+    }
+    @Override
+    protected void addTranslations() {
+        add(ModItems.TITANIUM_KNIFE.get(),"钛金刀");
+
+        //创造模式物品栏
+        add("itemGroup.pasterdelight.creative_mode_tab","帕斯特乐事");
+    }
+}
