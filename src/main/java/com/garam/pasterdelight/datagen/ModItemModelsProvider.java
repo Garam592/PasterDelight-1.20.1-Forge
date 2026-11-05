@@ -24,6 +24,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.TITANIUM_KNIFE);
         handheldItem(ModItems.COPPER_KNIFE);
         handheldItem(ModItems.DYEDREAM_KNIFE);
+        handheldItem(ModItems.MELT_DREAM_KNIFE);
     }
 
     @Override

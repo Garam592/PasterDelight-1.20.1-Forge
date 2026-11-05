@@ -14,6 +14,7 @@ public class ModEnUsProvider extends LanguageProvider {
         add(ModItems.TITANIUM_KNIFE.get(),"Titanium Knife");
         add(ModItems.COPPER_KNIFE.get(),"Copper Knife");
         add(ModItems.DYEDREAM_KNIFE.get(),"Dyedream Knife");
+        add(ModItems.MELT_DREAM_KNIFE.get(),"Melt Dream Knife");
 
         add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
     }
