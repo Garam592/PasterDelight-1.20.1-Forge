@@ -14,6 +14,7 @@ public class ModZhCnProvider extends LanguageProvider {
         add(ModItems.TITANIUM_KNIFE.get(),"钛金刀");
         add(ModItems.COPPER_KNIFE.get(),"铜刀");
         add(ModItems.DYEDREAM_KNIFE.get(),"染梦合金刀");
+        add(ModItems.MELT_DREAM_KNIFE.get(),"融梦水晶刀");
 
         //创造模式物品栏
         add("itemGroup.pasterdelight.creative_mode_tab","帕斯特乐事");
