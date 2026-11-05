@@ -19,7 +19,9 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.pasterdelight.creative_mode_tab"))
                     .icon(() -> new ItemStack(ModItems.TITANIUM_KNIFE.get()))
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.COPPER_KNIFE.get());
                         output.accept(ModItems.TITANIUM_KNIFE.get());
+                        output.accept(ModItems.DYEDREAM_KNIFE.get());
                     })
                     .build());
 

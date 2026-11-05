@@ -22,6 +22,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         handheldItem(ModItems.TITANIUM_KNIFE);
+        handheldItem(ModItems.COPPER_KNIFE);
+        handheldItem(ModItems.DYEDREAM_KNIFE);
     }
 
     @Override
