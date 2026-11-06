@@ -25,6 +25,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_KNIFE.get());
 
                         output.accept(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
+
+                        output.accept(ModBlocks.MOLTEN_GOLD_COOKING_POT.get());
                     })
                     .build());
 

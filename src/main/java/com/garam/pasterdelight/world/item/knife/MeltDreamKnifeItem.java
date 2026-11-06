@@ -1,4 +1,4 @@
-package com.garam.pasterdelight.world.item;
+package com.garam.pasterdelight.world.item.knife;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;

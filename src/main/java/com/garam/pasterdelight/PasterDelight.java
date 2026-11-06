@@ -1,10 +1,7 @@
 package com.garam.pasterdelight;
 
-import com.garam.pasterdelight.init.ModFluidContainerRelation;
+import com.garam.pasterdelight.init.*;
 import com.mojang.logging.LogUtils;
-import com.garam.pasterdelight.init.ModItems;
-import com.garam.pasterdelight.init.ModCreativeModeTabs;
-import com.garam.pasterdelight.init.ModFluids;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -25,8 +22,10 @@ public class PasterDelight
         IEventBus modEventBus = context.getModEventBus();
 
         ModItems.register(modEventBus);
-        ModCreativeModeTabs.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModFluids.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -36,6 +35,7 @@ public class PasterDelight
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         ModFluidContainerRelation.ResisterModFluidContainerRelation();
+
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 

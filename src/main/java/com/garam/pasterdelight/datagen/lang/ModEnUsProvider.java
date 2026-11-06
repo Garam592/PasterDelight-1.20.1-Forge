@@ -1,6 +1,7 @@
 package com.garam.pasterdelight.datagen.lang;
 
 import com.garam.pasterdelight.PasterDelight;
+import com.garam.pasterdelight.init.ModBlocks;
 import com.garam.pasterdelight.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -18,6 +19,8 @@ public class ModEnUsProvider extends LanguageProvider {
 
         add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"Glass Cup of Barley Tea");
         add("fluid.pasterdelight.barley_tea","Barley Tea (fluid)");
+
+        add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "Molten Gold Cooking Pot");
 
         add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
     }

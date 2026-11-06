@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.garam.pasterdelight.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "pasterdelight.refmap.json",
+  "mixins":
+  [
+    "CookingPotBlockEntityMixin",
+    "BlockEntityAccessor"
+  ],
+  "client":
+  [
+  ],
+  "server": [],
+  "minVersion": "0.8"
+}
