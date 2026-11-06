@@ -35,7 +35,7 @@ public class ModItems {
             .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.REST.get(), 1800, 0), 1.0f)
             .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.COOK.get(), 1800, 0), 1.0f) .nutrition(4).saturationMod(0.5f).alwaysEat().build())));
 
-    public static final RegistryObject<Item> MOLTEN_GOLD_COOKING_POT = ITEMS.register("molten_gold_cooking_pot", () -> new BlockItem(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_GOLD_COOKING_POT = ITEMS.register("molten_gold_cooking_pot", () -> new BlockItem(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,7 +1,7 @@
 package com.garam.pasterdelight.mixin;
 
-import com.garam.pasterdelight.world.block.pasterdreamcookingpot.CookingPotTypeHelper;
-import com.garam.pasterdelight.world.block.pasterdreamcookingpot.PasterDreamCookingPotBlockEntity;
+import com.garam.pasterdelight.world.block.pasterdelightcookingpot.CookingPotTypeHelper;
+import com.garam.pasterdelight.world.block.pasterdelightcookingpot.PasterDelightCookingPotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,7 +18,7 @@ public class CookingPotBlockEntityMixin
     private void pasterdream$replaceType(BlockPos pos, BlockState state, CallbackInfo ci)
     {
         BlockEntityType<?> pending = CookingPotTypeHelper.getAndClearPendingType();
-        if (pending != null && (Object) this instanceof PasterDreamCookingPotBlockEntity)
+        if (pending != null && (Object) this instanceof PasterDelightCookingPotBlockEntity)
         {
             ((BlockEntityAccessor) this).pasterdelight$setType(pending);
         }

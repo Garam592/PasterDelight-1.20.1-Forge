@@ -23,5 +23,8 @@ public class ModEnUsProvider extends LanguageProvider {
         add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "Molten Gold Cooking Pot");
 
         add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
+
+        add("tooltip.pasterdelight.限制外部输入堆叠上限为1", "Limit External Input Stack Size To 1");
+        add("tooltip.pasterdelight.不限制外部输入堆叠上限", "Unlimit External Input Stack Size");
     }
 }

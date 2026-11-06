@@ -1,7 +1,7 @@
 package com.garam.pasterdelight.init;
 
 import com.garam.pasterdelight.PasterDelight;
-import com.garam.pasterdelight.world.block.pasterdreamcookingpot.moltengoldcookingpot.MoltenGoldCookingPotBlockEntity;
+import com.garam.pasterdelight.world.block.pasterdelightcookingpot.moltengoldcookingpot.MoltenGoldCookingPotBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

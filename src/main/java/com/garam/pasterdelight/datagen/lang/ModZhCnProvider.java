@@ -24,5 +24,8 @@ public class ModZhCnProvider extends LanguageProvider {
 
         //创造模式物品栏
         add("itemGroup.pasterdelight.creative_mode_tab","帕斯特乐事");
+
+        add("tooltip.pasterdelight.限制外部输入堆叠上限为1", "限制外部输入堆叠上限为1");
+        add("tooltip.pasterdelight.不限制外部输入堆叠上限", "不限制外部输入堆叠上限");
     }
 }

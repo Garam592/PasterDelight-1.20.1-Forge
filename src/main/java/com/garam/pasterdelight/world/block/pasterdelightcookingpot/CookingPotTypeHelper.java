@@ -1,4 +1,4 @@
-package com.garam.pasterdelight.world.block.pasterdreamcookingpot;
+package com.garam.pasterdelight.world.block.pasterdelightcookingpot;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
