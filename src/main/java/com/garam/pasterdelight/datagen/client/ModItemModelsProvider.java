@@ -1,4 +1,4 @@
-package com.garam.pasterdelight.datagen;
+package com.garam.pasterdelight.datagen.client;
 
 import com.garam.pasterdelight.PasterDelight;
 import com.garam.pasterdelight.init.ModItems;

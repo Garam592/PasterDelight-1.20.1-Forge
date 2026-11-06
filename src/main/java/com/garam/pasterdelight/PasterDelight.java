@@ -1,5 +1,7 @@
 package com.garam.pasterdelight;
 
+import com.garam.pasterdelight.init.ModBlockEntities;
+import com.garam.pasterdelight.init.ModBlocks;
 import com.mojang.logging.LogUtils;
 import com.garam.pasterdelight.init.ModItems;
 import com.garam.pasterdelight.init.ModCreativeModeTabs;
@@ -23,6 +25,8 @@ public class PasterDelight
         IEventBus modEventBus = context.getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
