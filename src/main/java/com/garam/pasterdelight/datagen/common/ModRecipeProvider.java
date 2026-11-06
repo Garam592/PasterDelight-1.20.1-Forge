@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.init.ModRecipes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -42,7 +43,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_BUD_NUGGET.get()),
                         Ingredient.of(ModItems.TITANIUM_KNIFE.get()),
                         Ingredient.of(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_UPGRADE.get()),
-                        RecipeCategory.TOOLS, com.garam.pasterdelight.init.ModItems.DYEDREAM_KNIFE.get())
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_KNIFE.get())
                 .unlocks("has_dyedream_upgrade", has(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_UPGRADE.get()))
                 .save(consumer, PasterDelight.MOD_ID + ":dyedream_knife_smithing");
 
@@ -53,6 +54,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeCategory.TOOLS, ModItems.TITANIUM_KNIFE.get())
                 .unlocks("has_titanium_upgrade", has(com.pasterdream.pasterdreammod.init.ModItems.TITANIUM_UPGRADE.get()))
                 .save(consumer, PasterDelight.MOD_ID + ":titanium_knife_smithing");
+
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_UPGRADE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_KNIFE.get()),
+                        Ingredient.of(com.pasterdream.pasterdreammod.init.ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.TOOLS, ModItems.MELT_DREAM_KNIFE.get())
+                .unlocks("has_melt_dream_fragment", has(com.pasterdream.pasterdreammod.init.ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(consumer, PasterDelight.MOD_ID + ":melt_dream_knife_smithing");
 
         saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_KNIFE.get())
                         .requires(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get())
@@ -75,6 +84,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('a', Items.COPPER_INGOT)
                 .define('b', Items.STICK)
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, com.pasterdream.pasterdreammod.init.ModItems.SANDWICH.get())
+                .requires(Items.BREAD)
+                .requires(Items.COOKED_CHICKEN)
+                .requires(Ingredient.of(ItemTags.create(
+                                ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))))
+                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
+                .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
                 .save(consumer);
 
     }

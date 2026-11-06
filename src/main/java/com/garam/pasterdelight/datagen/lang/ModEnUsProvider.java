@@ -17,6 +17,9 @@ public class ModEnUsProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_KNIFE.get(),"Dyedream Knife");
         add(ModItems.MELT_DREAM_KNIFE.get(),"Melt Dream Knife");
 
+        add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"Glass Cup of Barley Tea");
+        add("fluid.pasterdelight.barley_tea","Barley Tea (fluid)");
+
         add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "Molten Gold Cooking Pot");
 
         add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
