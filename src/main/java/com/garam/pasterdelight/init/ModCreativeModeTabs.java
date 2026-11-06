@@ -22,6 +22,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_KNIFE.get());
                         output.accept(ModItems.TITANIUM_KNIFE.get());
                         output.accept(ModItems.DYEDREAM_KNIFE.get());
+                        output.accept(ModItems.MELT_DREAM_KNIFE.get());
+
+                        output.accept(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
                     })
                     .build());
 
