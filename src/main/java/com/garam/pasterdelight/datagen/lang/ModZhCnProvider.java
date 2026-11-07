@@ -19,6 +19,7 @@ public class ModZhCnProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_KNIFE.get(),"融梦水晶刀");
         add(ModItems.CONGEAL_WIND_IRON_KNIFE.get(),"凝风铁刀");
         add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get(),"萦风合金刀");
+        add("tooltip.pasterdream.fluffy_wind_alloy_knife.skill_name","战技：§b风袭速攻");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.desc1","§7▪ §9攻击时，击中一次实体，额外造成2次伤害");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.desc2","§7▪ §9冷却：3秒");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.passive_name","被动：§b其疾如风");
