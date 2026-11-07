@@ -7,7 +7,8 @@
   [
     "CookingPotBlockEntityMixin",
     "BlockEntityAccessor",
-    "CuttingBoardBlockMixin"
+    "CuttingBoardBlockEntityMixin",
+    "CuttingBoardBlockEntityAccessor"
   ],
   "client":
   [
