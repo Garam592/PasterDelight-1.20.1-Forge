@@ -1,6 +1,7 @@
 package com.garam.pasterdelight.datagen.common;
 
 import com.garam.pasterdelight.PasterDelight;
+import com.garam.pasterdelight.init.ModBlocks;
 import com.garam.pasterdelight.init.ModItems;
 import com.google.gson.JsonObject;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
@@ -13,8 +14,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
+import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 
 import java.util.function.Consumer;
+
+import static vectorwing.farmersdelight.data.recipe.CookingRecipes.MEDIUM_EXP;
+import static vectorwing.farmersdelight.data.recipe.CookingRecipes.NORMAL_COOKING;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public ModRecipeProvider(PackOutput pOutput) {
@@ -95,5 +101,32 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MOLTEN_GOLD_COOKING_POT.get())
+                .pattern("c c")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get())
+                .define('b', vectorwing.farmersdelight.common.registry.ModItems.COOKING_POT.get())
+                .define('c', Items.NETHER_BRICK)
+                .unlockedBy(getHasName(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()),
+                        has(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(consumer);
+
+        //锅烹饪配方
+        CookingPotRecipeBuilder.cookingPotRecipe(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
+                        com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.RYE_SEED.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.RYE_SEED.get())
+                .unlockedByItems("has_rye_seed", com.pasterdream.pasterdreammod.init.ModItems.RYE_SEED.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .save(consumer);
+        CookingPotRecipeBuilder.cookingPotRecipe(com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
+                        com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.AMBER_CANDY.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_LEAVES.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_COROLLA.get())
+                .unlockedByItems("has_glass_cup", com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .save(consumer,PasterDelight.MOD_ID+"glass_cup_of_cooked_dyedream_flower_tea_from_cooking_pot");
     }
 }
