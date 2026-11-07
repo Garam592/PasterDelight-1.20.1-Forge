@@ -20,7 +20,7 @@ import vectorwing.farmersdelight.common.item.KnifeItem;
 
 import java.util.List;
 
-public class FluffyWindAlloyKnifeItem extends KnifeItem implements FluffyWindAlloyTool {
+public class FluffyWindAlloyKnifeItem extends KnifeItem implements FluffyWindAlloyTool, RecipeMultiplyingKnife {
 
     private static final int TRIPLE_HIT_COOLDOWN_TICKS = 60;
     private static final String MULTI_CUT_TAG = "pasterdelight_fluffy_wind_multi_cut";
@@ -99,5 +99,11 @@ public class FluffyWindAlloyKnifeItem extends KnifeItem implements FluffyWindAll
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.SUCCESS);
         }
+    }
+
+    @Override
+    public int getMultiplyRounds()
+    {
+        return 4;
     }
 }
