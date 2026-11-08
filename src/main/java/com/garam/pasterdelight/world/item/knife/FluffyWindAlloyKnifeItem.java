@@ -104,6 +104,6 @@ public class FluffyWindAlloyKnifeItem extends KnifeItem implements FluffyWindAll
     @Override
     public int getMultiplyRounds()
     {
-        return 4;
+        return 16;
     }
 }
