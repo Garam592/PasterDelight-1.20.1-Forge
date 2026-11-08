@@ -1,9 +1,8 @@
 package com.garam.pasterdelight.world.item.knife;
 
 import net.minecraft.world.item.Tier;
-import vectorwing.farmersdelight.common.item.KnifeItem;
 
-public class CongealWindIronKnifeItem extends KnifeItem implements RecipeMultiplyingKnife
+public class CongealWindIronKnifeItem extends RecipeMultiplyingKnifeItem implements IRecipeMultiplyingKnife
 {
     public CongealWindIronKnifeItem(Tier tier, float attackDamage, float attackSpeed, Properties properties)
     {

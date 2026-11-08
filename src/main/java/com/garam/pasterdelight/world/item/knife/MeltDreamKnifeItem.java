@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 //TODO: 待解决访问问题后，修改模组版本依赖，不再使用反射方法
-public class MeltDreamKnifeItem extends KnifeItem implements RecipeMultiplyingKnife {
+public class MeltDreamKnifeItem extends RecipeMultiplyingKnifeItem implements IRecipeMultiplyingKnife {
 
     private static final Method ON_INVENTORY_TICK;
     private static final Method APPEND_HOVER_TEXT;
