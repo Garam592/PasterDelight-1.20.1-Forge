@@ -6,34 +6,21 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
 
 import java.util.List;
 
-public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements FluffyWindAlloyTool, IRecipeMultiplyingKnife {
+public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements FluffyWindAlloyTool{
 
     private static final int TRIPLE_HIT_COOLDOWN_TICKS = 60;
-    private static final String MULTI_CUT_TAG = "pasterdelight_fluffy_wind_multi_cut";
 
     public FluffyWindAlloyKnifeItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
         super(tier, attackDamage, attackSpeed, properties);
-    }
-
-    public static boolean isMultiCutEnabled(ItemStack stack) {
-        return stack.hasTag() && stack.getOrCreateTag().getBoolean(MULTI_CUT_TAG);
-    }
-
-    public static void toggleMultiCut(ItemStack stack) {
-        stack.getOrCreateTag().putBoolean(MULTI_CUT_TAG, !isMultiCutEnabled(stack));
     }
 
     @Override
@@ -65,7 +52,6 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive3"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive4"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.custom_tip"));
-
     }
 
     public static class LootingHandler {
@@ -77,26 +63,6 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
                     && player.getMainHandItem().getItem() instanceof FluffyWindAlloyKnifeItem) {
                 event.setLootingLevel(event.getLootingLevel() + 2);
             }
-        }
-    }
-
-    public static class CuttingBoardToggleHandler {
-        @SubscribeEvent(priority = EventPriority.HIGHEST)
-        public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-            if (!event.getEntity().isShiftKeyDown()) return;
-            ItemStack held = event.getEntity().getMainHandItem();
-            if (!(held.getItem() instanceof FluffyWindAlloyKnifeItem)) return;
-            if ((event.getLevel().getBlockEntity(event.getPos()) instanceof CuttingBoardBlockEntity)) return;
-
-            if (!event.getLevel().isClientSide) {
-                toggleMultiCut(held);
-                boolean enabled = isMultiCutEnabled(held);
-                event.getEntity().displayClientMessage(Component.translatable(
-                        enabled ? "tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting_enabled":
-                                "tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting_disabled"), true);
-            }
-            event.setCanceled(true);
-            event.setCancellationResult(InteractionResult.SUCCESS);
         }
     }
 
