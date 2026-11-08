@@ -43,15 +43,16 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.skill_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.desc1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.desc2"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive2"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive3"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.passive4"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_knife.custom_tip"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.skill_name"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.desc1"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.desc2"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive_name"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive1"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.custom_tip"));
+
     }
 
     public static class LootingHandler {

@@ -92,6 +92,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer);
 
+        // 覆盖原版帕斯特的三明治配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, com.pasterdream.pasterdreammod.init.ModItems.SANDWICH.get())
                 .requires(Items.BREAD)
                 .requires(Items.COOKED_CHICKEN)
