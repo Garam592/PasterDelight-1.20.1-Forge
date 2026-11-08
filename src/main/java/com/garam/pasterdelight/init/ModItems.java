@@ -4,11 +4,14 @@ import com.garam.pasterdelight.PasterDelight;
 import com.garam.pasterdelight.world.item.knife.CongealWindIronKnifeItem;
 import com.garam.pasterdelight.world.item.knife.FluffyWindAlloyKnifeItem;
 import com.garam.pasterdelight.world.item.knife.MeltDreamKnifeItem;
+import com.garam.pasterdelight.world.item.knife.ShadowErosionKnifeItem;
+import com.mojang.blaze3d.shaders.Effect;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -38,10 +41,16 @@ public class ModItems {
             ITEMS.register("congeal_wind_iron_knife",()-> new CongealWindIronKnifeItem(ModToolTiers.CONGEAL_WIND_IRON, 0.5F, -1.0F,new Item.Properties()));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_KNIFE =
             ITEMS.register("fluffy_wind_alloy_knife",()-> new FluffyWindAlloyKnifeItem(ModToolTiers.FLUFFY_WIND_ALLOY, 0.5F, -1.0F,new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> SHADOW_EROSION_KNIFE =
+            ITEMS.register("shadow_erosion_knife",()-> new ShadowErosionKnifeItem(ModToolTiers.SHADOW_EROSION, 0.5F, -1.0F,new Item.Properties().rarity(Rarity.RARE)));
+
     // 吃的
-    public static final RegistryObject<Item> GLASS_CUP_OF_BARLEY_TEA = ITEMS.register("glass_cup_of_barley_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder()
-            .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.REST.get(), 1800, 0), 1.0f)
-            .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.COOK.get(), 1800, 0), 1.0f) .nutrition(4).saturationMod(0.5f).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_BARLEY_TEA = ITEMS.register("glass_cup_of_barley_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).food(new FoodProperties.Builder()
+            .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.REST.get(), 900, 0), 1.0f)
+            .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.COOK.get(), 900, 0), 1.0f)
+            .effect(() -> new MobEffectInstance(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT.get(), 1800, 0), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0), 1.0f)
+            .nutrition(4).saturationMod(0.5f).alwaysEat().build())));
 
     public static final RegistryObject<Item> MOLTEN_GOLD_COOKING_POT = ITEMS.register("molten_gold_cooking_pot", () -> new BlockItem(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), new Item.Properties().stacksTo(1)){
         @Override

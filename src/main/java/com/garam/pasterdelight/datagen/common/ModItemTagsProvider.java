@@ -39,7 +39,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_KNIFE.get())
                 .add(ModItems.MELT_DREAM_KNIFE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_KNIFE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .add(ModItems.SHADOW_EROSION_KNIFE.get());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "tools/knives")))
                 .add(ModItems.TITANIUM_KNIFE.get())
@@ -47,7 +48,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_KNIFE.get())
                 .add(ModItems.MELT_DREAM_KNIFE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_KNIFE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .add(ModItems.SHADOW_EROSION_KNIFE.get());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("farmersdelight", "tools/knives")))
                 .add(ModItems.TITANIUM_KNIFE.get())
@@ -55,7 +57,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_KNIFE.get())
                 .add(ModItems.MELT_DREAM_KNIFE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_KNIFE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .add(ModItems.SHADOW_EROSION_KNIFE.get());
 
         tag(ItemTags.BREAKS_DECORATED_POTS)
                 .add(ModItems.TITANIUM_KNIFE.get())
@@ -63,7 +66,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_KNIFE.get())
                 .add(ModItems.MELT_DREAM_KNIFE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_KNIFE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .add(ModItems.SHADOW_EROSION_KNIFE.get());
 
         tag(ItemTags.TOOLS)
                 .add(ModItems.TITANIUM_KNIFE.get())
@@ -71,9 +75,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.DYEDREAM_KNIFE.get())
                 .add(ModItems.MELT_DREAM_KNIFE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_KNIFE.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .add(ModItems.SHADOW_EROSION_KNIFE.get());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "skill_cooldown")))
-                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .add(ModItems.DYEDREAM_KNIFE.get());
     }
 }

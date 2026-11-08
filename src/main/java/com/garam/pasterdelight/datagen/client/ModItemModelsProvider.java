@@ -27,6 +27,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MELT_DREAM_KNIFE);
         handheldItem(ModItems.CONGEAL_WIND_IRON_KNIFE);
         handheldItem(ModItems.FLUFFY_WIND_ALLOY_KNIFE);
+        handheldItem(ModItems.SHADOW_EROSION_KNIFE);
 
         basicItem(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
     }
