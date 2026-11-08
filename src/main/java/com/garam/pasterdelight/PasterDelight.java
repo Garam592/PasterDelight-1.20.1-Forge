@@ -49,7 +49,6 @@ public class PasterDelight
 
         MinecraftForge.EVENT_BUS.addListener(PasterDelight::onItemAttributeModifier);
         MinecraftForge.EVENT_BUS.register(FluffyWindAlloyKnifeItem.LootingHandler.class);
-        MinecraftForge.EVENT_BUS.register(FluffyWindAlloyKnifeItem.CuttingBoardToggleHandler.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
