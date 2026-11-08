@@ -46,7 +46,7 @@ public class CuttingBoardBlockEntityMixin
                     CuttingBoardRecipe recipe = matchingRecipe.get();
                     int rounds = Math.min(recipeMultiplyingKnife.getMultiplyRounds(), mixinThis.getStoredItem().getCount());
 
-                    for(int i = 0; i < RandomOutputCount.Calculate(rounds, recipeMultiplyingKnife.getMoreSpawnResultProbability(), mixinThis.getLevel().random); i++)
+                    for(int i = 0; i < rounds; i++)
                     {
                         //生成产物
                         for (ItemStack resultStack : recipe.rollResults(mixinThis.getLevel().random, EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, toolStack), new RecipeWrapper(accessorThis.inventoryAccessor())))
@@ -76,7 +76,7 @@ public class CuttingBoardBlockEntityMixin
                     //播放音效
                     mixinThis.playProcessingSound(recipe.getSoundEventID(), toolStack, mixinThis.getStoredItem());
                     //消耗原材料
-                    accessorThis.inventoryAccessor().extractItem(0, RandomOutputCount.Calculate(rounds, -recipeMultiplyingKnife.getNotUseMaterialProbability(), mixinThis.getLevel().random), false);
+                    accessorThis.inventoryAccessor().extractItem(0, rounds, false);
 
                     //触发成就/显示物品数量
                     if (player instanceof ServerPlayer)

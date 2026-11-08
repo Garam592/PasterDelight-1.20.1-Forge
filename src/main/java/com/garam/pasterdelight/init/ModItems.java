@@ -1,6 +1,7 @@
 package com.garam.pasterdelight.init;
 
 import com.garam.pasterdelight.PasterDelight;
+import com.garam.pasterdelight.world.item.knife.CongealWindIronKnifeItem;
 import com.garam.pasterdelight.world.item.knife.FluffyWindAlloyKnifeItem;
 import com.garam.pasterdelight.world.item.knife.MeltDreamKnifeItem;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
@@ -34,7 +35,7 @@ public class ModItems {
     public static final RegistryObject<Item> MELT_DREAM_KNIFE =
             ITEMS.register("melt_dream_knife",()-> new MeltDreamKnifeItem(ModToolTiers.MELT_DREAM, 0.5F, -2.0F,new Item.Properties().fireResistant().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_KNIFE =
-            ITEMS.register("congeal_wind_iron_knife",()-> new KnifeItem(ModToolTiers.CONGEAL_WIND_IRON, 0.5F, -1.0F,new Item.Properties()));
+            ITEMS.register("congeal_wind_iron_knife",()-> new CongealWindIronKnifeItem(ModToolTiers.CONGEAL_WIND_IRON, 0.5F, -1.0F,new Item.Properties()));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_KNIFE =
             ITEMS.register("fluffy_wind_alloy_knife",()-> new FluffyWindAlloyKnifeItem(ModToolTiers.FLUFFY_WIND_ALLOY, 0.5F, -1.0F,new Item.Properties().rarity(Rarity.UNCOMMON)));
     // 吃的
