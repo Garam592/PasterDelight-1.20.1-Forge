@@ -16,11 +16,10 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
-import vectorwing.farmersdelight.common.item.KnifeItem;
 
 import java.util.List;
 
-public class FluffyWindAlloyKnifeItem extends KnifeItem implements FluffyWindAlloyTool, RecipeMultiplyingKnife {
+public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements FluffyWindAlloyTool, IRecipeMultiplyingKnife {
 
     private static final int TRIPLE_HIT_COOLDOWN_TICKS = 60;
     private static final String MULTI_CUT_TAG = "pasterdelight_fluffy_wind_multi_cut";

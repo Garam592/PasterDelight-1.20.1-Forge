@@ -27,9 +27,9 @@ public class ModEnUsProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.passive3","§7▪ §9The faster you move, the faster you mine");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.passive4","§7▪ §9Drops are swept to you by the wind when breaking blocks");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.custom_tip","§7§o--Swift as the wind, orderly as the forest, fierce as fire, unfathomable as darkness.");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting_enabled","§a[Quick Cutting] Feature: On");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting_disabled","§c[Quick Cutting] Feature: Off");
 
+        add("message.pasterdelight.cutting_recipe_multiplying_enable", "§a[Cutting Recipe Multiplying] Enable");
+        add("message.pasterdelight.cutting_recipe_multiplying_disable", "§c[Cutting Recipe Multiplying] Disable");
 
         add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"Glass Cup of Barley Tea");
         add("fluid.pasterdelight.barley_tea","Barley Tea (fluid)");

@@ -28,8 +28,9 @@ public class ModZhCnProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.passive3","§7▪ §9移动速度越快，挖掘速度越快");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.passive4","§7▪ §9破坏方块时，掉落物会被风卷至身边");
         add("tooltip.pasterdream.fluffy_wind_alloy_knife.custom_tip","§7§o--疾如风，徐如林，掠如火，难知如阴");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting_enabled","§a【快速切割】功能：开启");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.quick_cutting_disabled","§c【快速切割】功能：关闭");
+
+        add("message.pasterdelight.cutting_recipe_multiplying_enable", "§a[批量砧板配方处理] 开启");
+        add("message.pasterdelight.cutting_recipe_multiplying_disable", "§c[批量砧板配方处理] 关闭");
 
         add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"大麦茶");
         add("fluid.pasterdelight.barley_tea","大麦茶（流体）");

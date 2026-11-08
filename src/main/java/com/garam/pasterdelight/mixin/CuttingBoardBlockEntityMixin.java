@@ -1,7 +1,7 @@
 package com.garam.pasterdelight.mixin;
 
-import com.garam.pasterdelight.helper.RandomOutputCount;
-import com.garam.pasterdelight.world.item.knife.RecipeMultiplyingKnife;
+import com.garam.pasterdelight.helper.RecipeMultiplyingSwitch;
+import com.garam.pasterdelight.world.item.knife.IRecipeMultiplyingKnife;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +33,7 @@ public class CuttingBoardBlockEntityMixin
     @Inject(method = "processStoredItemUsingTool", at = @At("HEAD"), cancellable = true, remap = false)
     public void processStoredItemUsingToolMixin(ItemStack toolStack, @Nullable Player player, CallbackInfoReturnable<Boolean> cir)
     {
-        if(toolStack.getItem() instanceof RecipeMultiplyingKnife recipeMultiplyingKnife)
+        if(RecipeMultiplyingSwitch.getStatus(player) && toolStack.getItem() instanceof IRecipeMultiplyingKnife recipeMultiplyingKnife)
         {
             CuttingBoardBlockEntity mixinThis = (CuttingBoardBlockEntity)(Object)this;
             CuttingBoardBlockEntityAccessor accessorThis = (CuttingBoardBlockEntityAccessor)this;
