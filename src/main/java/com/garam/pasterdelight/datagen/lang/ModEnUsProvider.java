@@ -41,6 +41,13 @@ public class ModEnUsProvider extends LanguageProvider {
         add(ModItems.SHADOW_EROSION_KNIFE.get(),"Shadow Erosion Knife");
         add("tooltip.pasterdelight.shadow_erosion_knife.quick_cutting","§7▪ §9When using this knife to prep food on the cutting board, handle 8 at a time. Sneak and right-click to toggle this feature");
 
+        add(ModItems.SHADOW_ALLOY_KNIFE.get(),"Shadow Alloy Knife");
+        add("tooltip.pasterdelight.shadow_alloy_knife.quick_cutting","§7▪ §9When using this knife to prep food on the cutting board, handle 32 at a time. Sneak and right-click to toggle this feature");
+        add("tooltip.pasterdelight.shadow_alloy_knife.skill_name","Combat Art: §bShadow Raid Backstab");
+        add("tooltip.pasterdelight.shadow_alloy_knife.desc1","§7▪ §9On hit, the attack deals 200% damage and counts as a backstab attack");
+        add("tooltip.pasterdelight.shadow_alloy_knife.desc2","§7▪ §9Cooldown: 2s");
+        add("tooltip.pasterdelight.shadow_alloy_tool.backstabbing","§7▪ §9This weapon comes with Backstab I and can stack with enchantments");
+
         add("tooltip.pasterdelight.multi_cut_enabled","§a[Quick Cutting] Feature: On");
         add("tooltip.pasterdelight.multi_cut_disabled","§c[Quick Cutting] Feature: Off");
 
