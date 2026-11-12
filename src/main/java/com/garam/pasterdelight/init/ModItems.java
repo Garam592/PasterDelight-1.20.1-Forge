@@ -1,10 +1,7 @@
 package com.garam.pasterdelight.init;
 
 import com.garam.pasterdelight.PasterDelight;
-import com.garam.pasterdelight.world.item.knife.CongealWindIronKnifeItem;
-import com.garam.pasterdelight.world.item.knife.FluffyWindAlloyKnifeItem;
-import com.garam.pasterdelight.world.item.knife.MeltDreamKnifeItem;
-import com.garam.pasterdelight.world.item.knife.ShadowErosionKnifeItem;
+import com.garam.pasterdelight.world.item.knife.*;
 import com.mojang.blaze3d.shaders.Effect;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
@@ -42,7 +39,9 @@ public class ModItems {
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_KNIFE =
             ITEMS.register("fluffy_wind_alloy_knife",()-> new FluffyWindAlloyKnifeItem(ModToolTiers.FLUFFY_WIND_ALLOY, 0.5F, -1.0F,new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SHADOW_EROSION_KNIFE =
-            ITEMS.register("shadow_erosion_knife",()-> new ShadowErosionKnifeItem(ModToolTiers.SHADOW_EROSION, 0.5F, -1.0F,new Item.Properties().rarity(Rarity.RARE)));
+            ITEMS.register("shadow_erosion_knife",()-> new ShadowErosionKnifeItem(ModToolTiers.SHADOW_EROSION, 0.5F, -2.0F,new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> SHADOW_ALLOY_KNIFE =
+            ITEMS.register("shadow_alloy_knife",()-> new ShadowAlloyKnifeItem(ModToolTiers.SHADOW_ALLOY, 0.5F, -2.0F,new Item.Properties().rarity(Rarity.EPIC)));
 
     // 吃的
     public static final RegistryObject<Item> GLASS_CUP_OF_BARLEY_TEA = ITEMS.register("glass_cup_of_barley_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).food(new FoodProperties.Builder()
