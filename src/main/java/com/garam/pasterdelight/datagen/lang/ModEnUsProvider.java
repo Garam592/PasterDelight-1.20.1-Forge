@@ -56,6 +56,11 @@ public class ModEnUsProvider extends LanguageProvider {
 
         add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"Glass Cup of Barley Tea");
         add("fluid.pasterdelight.barley_tea","Barley Tea (fluid)");
+        add(ModItems.GLASS_CUP_OF_FIG_JUICE.get(),"Glass Cup Of Barley Tea");
+        add("fluid.pasterdelight.fig_juice","Glass Cup Of Barley Tea (fluid)");
+        add(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get(),"Martini Glass Of Axolotl Special Drink");
+        add("fluid.pasterdelight.axolotl_special_drink","Axolotl Special Drink (fluid)");
+        add("tooltip.pasterdelight.martini_glass_of_axolotl_special_drink","§7§o--Don't worry, the axolotl just took a little Blue Dew bath in the cup");
 
         add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "Molten Gold Cooking Pot");
         add("tooltip.pasterdelight.molten_gold_cooking_pot.1", "§7▪ §9A cooking pot that doesn’t need a heat source and speeds up the cooking of all meals and drinks.");

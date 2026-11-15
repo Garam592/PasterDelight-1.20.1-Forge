@@ -38,9 +38,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
     }
 
+    private void saveNbtPreservingShaped(ShapedRecipeBuilder builder, Consumer<FinishedRecipe> writer, String name) {
+        builder.save(wrapped -> writer.accept(new FinishedRecipe() {
+            @Override public void serializeRecipeData(JsonObject json) { wrapped.serializeRecipeData(json); }
+            @Override public ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name); }
+            @Override public RecipeSerializer<?> getType() { return ModRecipes.NBT_PRESERVING_SHAPED_SERIALIZER.get(); }
+            @Override public JsonObject serializeAdvancement() { return wrapped.serializeAdvancement(); }
+            @Override public ResourceLocation getAdvancementId() { return wrapped.getAdvancementId(); }
+        }), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
+    }
+
+    private void saveAxolotlDrink(ShapelessRecipeBuilder builder, Consumer<FinishedRecipe> writer, String name) {
+        builder.save(wrapped -> writer.accept(new FinishedRecipe() {
+            @Override public void serializeRecipeData(JsonObject json) { wrapped.serializeRecipeData(json); }
+            @Override public ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(PasterDelight.MOD_ID, name); }
+            @Override public RecipeSerializer<?> getType() { return com.garam.pasterdelight.init.ModRecipes.AXOLOTL_SPECIAL_DRINK.get(); }
+            @Override public JsonObject serializeAdvancement() { return wrapped.serializeAdvancement(); }
+            @Override public ResourceLocation getAdvancementId() { return wrapped.getAdvancementId(); }
+        }), ResourceLocation.fromNamespaceAndPath(PasterDelight.MOD_ID, name));
+    }
+
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         KnifeRecipes(consumer);
+        CookingRecipes(consumer);
     }
 
     // 刀合成配方
@@ -92,15 +113,33 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer);
 
-        // 覆盖原版帕斯特的三明治配方
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, com.pasterdream.pasterdreammod.init.ModItems.SANDWICH.get())
-                .requires(Items.BREAD)
-                .requires(Items.COOKED_CHICKEN)
-                .requires(Ingredient.of(ItemTags.create(
-                                ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))))
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
-                .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_KNIFE.get())
+                .pattern("a")
+                .pattern("b")
+                .define('a', com.pasterdream.pasterdreammod.init.ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', com.pasterdream.pasterdreammod.init.ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(com.pasterdream.pasterdreammod.init.ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(com.pasterdream.pasterdreammod.init.ModItems.CONGEAL_WIND_IRON_INGOT.get()))
                 .save(consumer);
+
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(com.pasterdream.pasterdreammod.init.ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()),
+                        Ingredient.of(ModItems.CONGEAL_WIND_IRON_KNIFE.get()),
+                        Ingredient.of(com.pasterdream.pasterdreammod.init.ModItems.CONGEAL_WIND.get()),
+                        RecipeCategory.TOOLS, ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
+                .unlocks("has_fluffy_wind_alloy_upgrade", has(com.pasterdream.pasterdreammod.init.ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get()))
+                .save(consumer, PasterDelight.MOD_ID + ":fluffy_wind_alloy_knife_smithing");
+
+
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_KNIFE.get())
+                .pattern("cbc")
+                .pattern("bab")
+                .pattern("cbc")
+                .define('a', ModItems.SHADOW_EROSION_KNIFE.get())
+                .define('b', com.pasterdream.pasterdreammod.init.ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', com.pasterdream.pasterdreammod.init.ModItems.NIGHTMARE_FUEL.get())
+                .unlockedBy(getHasName(com.pasterdream.pasterdreammod.init.ModItems.SHADOW_ALLOY_INGOT.get()),
+                        has(com.pasterdream.pasterdreammod.init.ModItems.SHADOW_ALLOY_INGOT.get()))
+                ,consumer,"shadow_alloy_knife_crafting");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MOLTEN_GOLD_COOKING_POT.get())
                 .pattern("c c")
@@ -112,8 +151,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()),
                         has(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()))
                 .save(consumer);
-
-        //锅烹饪配方
+    }
+    // 烹饪配方
+    private void CookingRecipes(Consumer<FinishedRecipe> consumer){
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
                         com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
                 .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.RYE_SEED.get())
@@ -121,6 +161,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItems("has_rye_seed", com.pasterdream.pasterdreammod.init.ModItems.RYE_SEED.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
                 .save(consumer);
+
         CookingPotRecipeBuilder.cookingPotRecipe(com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
                         com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
                 .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.AMBER_CANDY.get())
@@ -128,6 +169,45 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_COROLLA.get())
                 .unlockedByItems("has_glass_cup", com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-                .save(consumer,PasterDelight.MOD_ID+"glass_cup_of_cooked_dyedream_flower_tea_from_cooking_pot");
+                .save(consumer,PasterDelight.MOD_ID+":glass_cup_of_cooked_dyedream_flower_tea_from_cooking_pot");
+
+        CookingPotRecipeBuilder.cookingPotRecipe(com.pasterdream.pasterdreammod.init.ModItems.QUEER_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
+                        Items.BOWL)
+                .addIngredient(Items.MUSHROOM_STEW)
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.SINGULARITY_FERN.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.MISTY_DREAMING_LOTUS.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_COROLLA.get())
+                .addIngredient(Items.GHAST_TEAR)
+                .unlockedByItems("has_misty_dreaming_lotus", com.pasterdream.pasterdreammod.init.ModItems.MISTY_DREAMING_LOTUS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .save(consumer,PasterDelight.MOD_ID+":queer_soup_from_cooking_pot");
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ModItems.GLASS_CUP_OF_FIG_JUICE.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
+                        com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.FIG.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.FIG.get())
+                .addIngredient(Items.SUGAR)
+                .unlockedByItems("has_fig", com.pasterdream.pasterdreammod.init.ModItems.FIG.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .save(consumer);
+
+        // 覆盖原版帕斯特的三明治配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, com.pasterdream.pasterdreammod.init.ModItems.SANDWICH.get())
+                .requires(Items.BREAD)
+                .requires(Items.COOKED_CHICKEN)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))))
+                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
+                .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
+                .save(consumer);
+
+        // 美西螈特饮（保留美西螈桶）
+        saveAxolotlDrink(ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get(),2)
+                .requires(com.pasterdream.pasterdreammod.init.ModItems.MARTINI_GLASS.get(),2)
+                .requires(Items.AXOLOTL_BUCKET)
+                .requires(com.pasterdream.pasterdreammod.init.ModItems.SALT.get())
+                .requires(com.pasterdream.pasterdreammod.init.ModItems.BLUE_DEW.get(),2)
+                .unlockedBy(getHasName(Items.AXOLOTL_BUCKET), has(Items.AXOLOTL_BUCKET)),
+                consumer, "martini_glass_of_axolotl_special_drink");
     }
 }
