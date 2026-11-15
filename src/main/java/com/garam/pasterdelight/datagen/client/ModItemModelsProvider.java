@@ -31,6 +31,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.SHADOW_ALLOY_KNIFE);
 
         basicItem(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
+        basicItem(ModItems.GLASS_CUP_OF_FIG_JUICE.get());
+        basicItem(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get());
     }
 
     @Override

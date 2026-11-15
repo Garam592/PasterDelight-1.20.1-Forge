@@ -7,8 +7,11 @@ import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamD
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -51,6 +54,29 @@ public class ModItems {
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0), 1.0f)
             .nutrition(4).saturationMod(0.5f).alwaysEat().build())));
 
+    public static final RegistryObject<Item> GLASS_CUP_OF_FIG_JUICE = ITEMS.register("glass_cup_of_fig_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1.5).food(new FoodProperties.Builder()
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 1.0f)
+            .nutrition(4).saturationMod(0.5f).alwaysEat().build())));
+
+    public static final RegistryObject<Item> MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK = ITEMS.register("martini_glass_of_axolotl_special_drink", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).food(new FoodProperties.Builder()
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 2400, 0), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.CONDUIT_POWER, 2400, 0), 1.0f)
+            .effect(() -> new MobEffectInstance(com.pasterdream.pasterdreammod.init.ModEffects.COOK.get(), 1200, 0), 1.0f)
+            .nutrition(3).saturationMod(0.5f).alwaysEat().build())){
+        @Override
+        protected void onDrinkSpecial(LivingEntity entity, Level level) {
+            super.onDrinkSpecial(entity, level);
+            level.playSound(null, entity.blockPosition(), SoundEvents.AXOLOTL_IDLE_AIR, SoundSource.PLAYERS, 2.0F, 1.0F);
+        }
+
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            super.appendHoverText(stack, level, tooltip, flag);
+            tooltip.add(Component.translatable("tooltip.pasterdelight.martini_glass_of_axolotl_special_drink"));
+        }
+    });
+
+    // 锅
     public static final RegistryObject<Item> MOLTEN_GOLD_COOKING_POT = ITEMS.register("molten_gold_cooking_pot", () -> new BlockItem(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), new Item.Properties().stacksTo(1)){
         @Override
         public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {

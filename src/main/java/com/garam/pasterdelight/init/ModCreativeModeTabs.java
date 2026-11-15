@@ -29,6 +29,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_ALLOY_KNIFE.get());
 
                         output.accept(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
+                        output.accept(ModItems.GLASS_CUP_OF_FIG_JUICE.get());
+                        output.accept(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get());
 
                         output.accept(ModBlocks.MOLTEN_GOLD_COOKING_POT.get());
                     })

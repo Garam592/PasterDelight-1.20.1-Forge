@@ -22,7 +22,7 @@ public class MoltenGoldCookingPotBlock extends CookingPotBlock
 {
     public MoltenGoldCookingPotBlock()
     {
-        super(BlockBehaviour.Properties.copy(vectorwing.farmersdelight.common.registry.ModBlocks.COOKING_POT.get()));
+        super(BlockBehaviour.Properties.copy(vectorwing.farmersdelight.common.registry.ModBlocks.COOKING_POT.get()).lightLevel(s->12));
     }
 
     @Override

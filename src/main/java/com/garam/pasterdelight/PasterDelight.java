@@ -40,6 +40,7 @@ public class PasterDelight
         ModFluids.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModMenus.register(modEventBus);
+        ModRecipes.register(modEventBus);
         ModNetWork.register();
 
         modEventBus.addListener(this::commonSetup);

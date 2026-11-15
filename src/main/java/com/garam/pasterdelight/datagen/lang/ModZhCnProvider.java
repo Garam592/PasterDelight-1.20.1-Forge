@@ -52,6 +52,11 @@ public class ModZhCnProvider extends LanguageProvider {
 
         add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"大麦茶");
         add("fluid.pasterdelight.barley_tea","大麦茶（流体）");
+        add(ModItems.GLASS_CUP_OF_FIG_JUICE.get(),"无花果汁");
+        add("fluid.pasterdelight.fig_juice","无花果汁（流体）");
+        add(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get(),"美西螈特饮");
+        add("fluid.pasterdelight.axolotl_special_drink","美西螈特饮（流体）");
+        add("tooltip.pasterdelight.martini_glass_of_axolotl_special_drink","§7§o--不用担心，美西螈只是到杯子里洗了个蔚蓝露滴澡");
 
         add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "炙焰金厨锅");
         add("tooltip.pasterdelight.molten_gold_cooking_pot.1", "§7▪ §9无需热源并提升所有菜肴和饮品的烹饪速度的厨锅");
