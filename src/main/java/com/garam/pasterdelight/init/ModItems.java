@@ -1,7 +1,7 @@
 package com.garam.pasterdelight.init;
 
 import com.garam.pasterdelight.PasterDelight;
-import com.garam.pasterdelight.world.item.knife.*;
+import com.garam.pasterdelight.world.item.pasterdelightknife.knive.*;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;

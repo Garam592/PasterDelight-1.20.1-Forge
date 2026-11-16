@@ -1,5 +1,6 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
+import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;

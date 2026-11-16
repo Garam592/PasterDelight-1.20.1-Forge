@@ -1,5 +1,6 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
+import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;

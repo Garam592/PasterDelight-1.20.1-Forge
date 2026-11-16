@@ -1,7 +1,7 @@
 package com.garam.pasterdelight.mixin;
 
 import com.garam.pasterdelight.helper.RecipeMultiplyingSwitch;
-import com.garam.pasterdelight.world.item.knife.IRecipeMultiplyingKnife;
+import com.garam.pasterdelight.world.item.pasterdelightknife.IRecipeMultiplyingKnife;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;

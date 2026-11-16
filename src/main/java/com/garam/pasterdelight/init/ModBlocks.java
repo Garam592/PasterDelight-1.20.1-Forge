@@ -1,7 +1,7 @@
 package com.garam.pasterdelight.init;
 
 import com.garam.pasterdelight.PasterDelight;
-import com.garam.pasterdelight.world.block.PasterDelightPieBlock;
+import com.garam.pasterdelight.world.block.pasterdelightpie.PasterDelightPieBlock;
 import com.garam.pasterdelight.world.block.pasterdelightcookingpot.moltengoldcookingpot.MoltenGoldCookingPotBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

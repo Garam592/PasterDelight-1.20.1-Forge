@@ -1,5 +1,6 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
+import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
 import com.google.common.collect.Multimap;
 import com.pasterdream.pasterdreammod.world.item.shadowalloytool.ShadowAlloyTool;
 import net.minecraft.network.chat.Component;
@@ -24,8 +25,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements ShadowAlloyTool,IRecipeMultiplyingKnife{
-
+public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements ShadowAlloyTool
+{
     //战技冷却：2秒
     private static final int SKILL_COOLDOWN_TICKS = 40;
 

@@ -1,7 +1,7 @@
 package com.garam.pasterdelight;
 
 import com.garam.pasterdelight.init.*;
-import com.garam.pasterdelight.world.item.knife.FluffyWindAlloyKnifeItem;
+import com.garam.pasterdelight.world.item.pasterdelightknife.knive.FluffyWindAlloyKnifeItem;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;

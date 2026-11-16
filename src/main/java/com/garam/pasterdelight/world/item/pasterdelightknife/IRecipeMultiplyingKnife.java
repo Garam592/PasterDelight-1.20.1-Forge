@@ -1,4 +1,4 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife;
 
 public interface IRecipeMultiplyingKnife
 {
