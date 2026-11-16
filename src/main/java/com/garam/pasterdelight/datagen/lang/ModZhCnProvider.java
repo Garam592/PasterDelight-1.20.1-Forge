@@ -14,9 +14,9 @@ public class ModZhCnProvider extends LanguageProvider {
     protected void addTranslations() {
         add(ModItems.TITANIUM_KNIFE.get(),"钛金刀");
         add(ModItems.COPPER_KNIFE.get(),"铜刀");
-        add(ModItems.DYEDREAM_KNIFE.get(),"染梦合金刀");
 
         //染梦系列刀
+        add(ModItems.DYEDREAM_KNIFE.get(),"染梦合金刀");
         add(ModItems.MELT_DREAM_KNIFE.get(),"融梦水晶刀");
         add("tooltip.pasterdelight.melt_dream_knife.quick_cutting","§7▪ §9使用该刀在砧板处理菜品时，一次处理4个，潜行右键以开关该功能");
         add("tooltip.pasterdelight.melt_dream_knife.skill_name","战技：§b碎梦刺击");
@@ -50,6 +50,7 @@ public class ModZhCnProvider extends LanguageProvider {
         add("message.pasterdelight.cutting_recipe_multiplying_enable", "§a[批量砧板配方处理] 开启");
         add("message.pasterdelight.cutting_recipe_multiplying_disable", "§c[批量砧板配方处理] 关闭");
 
+        // 食物
         add(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(),"大麦茶");
         add("fluid.pasterdelight.barley_tea","大麦茶（流体）");
         add(ModItems.GLASS_CUP_OF_FIG_JUICE.get(),"无花果汁");
@@ -57,7 +58,18 @@ public class ModZhCnProvider extends LanguageProvider {
         add(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get(),"美西螈特饮");
         add("fluid.pasterdelight.axolotl_special_drink","美西螈特饮（流体）");
         add("tooltip.pasterdelight.martini_glass_of_axolotl_special_drink","§7§o--不用担心，美西螈只是到杯子里洗了个蔚蓝露滴澡");
+        add(ModItems.SHROOMCLAW_ENERGY.get(),"蘑爪");
+        add("fluid.pasterdelight.shroomclaw_energy","蘑爪（流体）");
+        add("tooltip.pasterdelight.shroomclaw_energy","§7§o--释放暗影怪");
+        add(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get(),"染梦果派切片");
+        add(ModItems.DYEDREAM_FRUIT_PIE.get(),"染梦果派");
+        add(ModItems.FIG_PIE_SLICE.get(),"无花果派切片");
+        add(ModItems.FIG_PIE.get(),"无花果派");
+        add("tooltip.pasterdelight.fig_pie","§7§o--有一丝丝粘嘴，但不失无花果的酸甜");
 
+        add(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get(),"流明荧光酱");
+
+        // 工具类方块
         add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "炙焰金厨锅");
         add("tooltip.pasterdelight.molten_gold_cooking_pot.1", "§7▪ §9无需热源并提升所有菜肴和饮品的烹饪速度的厨锅");
         add("tooltip.pasterdelight.molten_gold_cooking_pot.2", "§7▪ §9允许调整外部输入堆叠上限");

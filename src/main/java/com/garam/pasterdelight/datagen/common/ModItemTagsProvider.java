@@ -88,5 +88,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "skill_cooldown")))
                 .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
                 .add(ModItems.MELT_DREAM_KNIFE.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("create", "upright_on_belt")))
+                .add(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get())
+                .add(ModItems.DYEDREAM_FRUIT_PIE.get())
+                .add(ModItems.FIG_PIE.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("farmersdelight", "pies")))
+                .add(ModItems.DYEDREAM_FRUIT_PIE.get())
+                .add(ModItems.FIG_PIE.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("farmersdelight", "sweets")))
+                .add(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get())
+                .add(ModItems.FIG_PIE_SLICE.get());
     }
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
+import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 import java.util.function.Consumer;
 
@@ -154,6 +155,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
     // 烹饪配方
     private void CookingRecipes(Consumer<FinishedRecipe> consumer){
+        // ====== 锅烹饪配方 ======
         CookingPotRecipeBuilder.cookingPotRecipe(ModItems.GLASS_CUP_OF_BARLEY_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
                         com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
                 .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.RYE_SEED.get())
@@ -190,6 +192,100 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItems("has_fig", com.pasterdream.pasterdreammod.init.ModItems.FIG.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
                 .save(consumer);
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ModItems.SHROOMCLAW_ENERGY.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
+                        com.pasterdream.pasterdreammod.init.ModItems.GLASS_CUP.get())
+                .addIngredient(vectorwing.farmersdelight.common.registry.ModItems.HOT_COCOA.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.SHADOW_FUNGUS.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.SHADOW_ROOTS.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.NIGHTMARE_FUEL.get())
+                .addIngredient(Items.SUGAR)
+                .addIngredient(Items.SUGAR)
+                .unlockedByItems("has_nightmare_fuel", com.pasterdream.pasterdreammod.init.ModItems.NIGHTMARE_FUEL.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .save(consumer);
+
+        CookingPotRecipeBuilder.cookingPotRecipe(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get(), 1, NORMAL_COOKING, MEDIUM_EXP,
+                        Items.BOWL)
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.LIGHT_BALL.get())
+                .addIngredient(com.pasterdream.pasterdreammod.init.ModItems.LIGHT_BALL.get())
+                .unlockedByItems("has_light_ball", com.pasterdream.pasterdreammod.init.ModItems.LIGHT_BALL.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .save(consumer);
+
+        // ====== 派 ======
+        // 染梦果派
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.DYEDREAM_FRUIT_PIE.get())
+                .pattern("aaa")
+                .pattern("bbb")
+                .pattern("cdc")
+                .define('a', com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_DUST_PIECE.get())
+                .define('b', com.pasterdream.pasterdreammod.init.ModItems.DYEDREAM_FRUIT.get())
+                .define('c', com.pasterdream.pasterdreammod.init.ModItems.AMBER_CANDY.get())
+                .define('d', vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get())
+                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get()),
+                        has(vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.DYEDREAM_FRUIT_PIE.get())
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_FRUIT_PIE_SLICE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get()),
+                        has(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get()))
+                .save(consumer,PasterDelight.MOD_ID+":dyedream_fruit_pie_from_slices");
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(
+                        Ingredient.of(ModItems.DYEDREAM_FRUIT_PIE.get()),
+                        Ingredient.of(ItemTags.create(
+                                ResourceLocation.fromNamespaceAndPath("farmersdelight", "tools/knives"))),
+                        ModItems.DYEDREAM_FRUIT_PIE_SLICE.get(),
+                        4)
+                .unlockedBy("has_dyedream_fruit_pie", has(ModItems.DYEDREAM_FRUIT_PIE.get()))
+                .save(consumer, PasterDelight.MOD_ID + ":cutting/dyedream_fruit_pie");
+
+        // 无花果派
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.FIG_PIE.get())
+                .pattern("bab")
+                .pattern("bcb")
+                .pattern(" d ")
+                .define('a', com.pasterdream.pasterdreammod.init.ModItems.JELLYFISH_MUD.get())
+                .define('b', com.pasterdream.pasterdreammod.init.ModItems.FIG.get())
+                .define('c', Items.SUGAR)
+                .define('d', vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get())
+                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get()),
+                        has(vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.FIG_PIE.get())
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.FIG_PIE_SLICE.get())
+                .unlockedBy(getHasName(ModItems.FIG_PIE_SLICE.get()),
+                        has(ModItems.FIG_PIE_SLICE.get()))
+                .save(consumer,PasterDelight.MOD_ID+":fig_pie_from_slices");
+
+        CuttingBoardRecipeBuilder.cuttingRecipe(
+                        Ingredient.of(ModItems.FIG_PIE.get()),
+                        Ingredient.of(ItemTags.create(
+                                ResourceLocation.fromNamespaceAndPath("farmersdelight", "tools/knives"))),
+                        ModItems.FIG_PIE_SLICE.get(),
+                        4)
+                .unlockedBy("has_fig_pie", has(ModItems.FIG_PIE.get()))
+                .save(consumer, PasterDelight.MOD_ID + ":cutting/fig_pie");
+
+        //巧克力派新配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, vectorwing.farmersdelight.common.registry.ModItems.CHOCOLATE_PIE.get(),2)
+                .pattern("aaa")
+                .pattern("bbb")
+                .pattern("c c")
+                .define('a', com.pasterdream.pasterdreammod.init.ModItems.CHOCOLATE.get())
+                .define('b', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "milk"))))
+                .define('c', vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get())
+                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get()),
+                        has(vectorwing.farmersdelight.common.registry.ModItems.PIE_CRUST.get()))
+                .save(consumer,PasterDelight.MOD_ID+":chocolate_pie_from_chocolate");
 
         // 覆盖原版帕斯特的三明治配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, com.pasterdream.pasterdreammod.init.ModItems.SANDWICH.get())
