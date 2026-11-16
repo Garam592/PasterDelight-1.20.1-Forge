@@ -1,8 +1,12 @@
 package com.garam.pasterdelight.datagen.common;
 
 import com.garam.pasterdelight.PasterDelight;
+import com.garam.pasterdelight.init.ModBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -19,6 +23,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider pProvider)
     {
-        //在这里添加BlockTags
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("farmersdelight", "pies")))
+                .add(ModBlocks.DYEDREAM_FRUIT_PIE.get())
+                .add(ModBlocks.FIG_PIE.get());
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("create", "brittle")))
+                .add(ModBlocks.DYEDREAM_FRUIT_PIE.get())
+                .add(ModBlocks.FIG_PIE.get());
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("farmersdelight", "mineable/knife")))
+                .add(ModBlocks.DYEDREAM_FRUIT_PIE.get())
+                .add(ModBlocks.FIG_PIE.get());
     }
 }

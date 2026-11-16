@@ -61,6 +61,15 @@ public class ModEnUsProvider extends LanguageProvider {
         add(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get(),"Martini Glass Of Axolotl Special Drink");
         add("fluid.pasterdelight.axolotl_special_drink","Axolotl Special Drink (fluid)");
         add("tooltip.pasterdelight.martini_glass_of_axolotl_special_drink","§7§o--Don't worry, the axolotl just took a little Blue Dew bath in the cup");
+        add(ModItems.SHROOMCLAW_ENERGY.get(),"Shroomclaw Energy");
+        add("fluid.pasterdelight.shroomclaw_energy","Shroomclaw Energy (fluid)");
+        add("tooltip.pasterdelight.shroomclaw_energy","§7§o--Unleash the Shadow Monster");
+        add(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get(),"Light Ball Fluorescent Sauce");
+        add(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get(),"Dyedream Fruit Pie Slice");
+        add(ModItems.DYEDREAM_FRUIT_PIE.get(),"Dyedream Fruit Pie");
+        add(ModItems.FIG_PIE_SLICE.get(),"Fig Pie Slice");
+        add(ModItems.FIG_PIE.get(),"Fig Pie");
+        add("tooltip.pasterdelight.fig_pie","§7§o--It's a bit sticky, but still has the sweet and tangy taste of figs");
 
         add(ModBlocks.MOLTEN_GOLD_COOKING_POT.get(), "Molten Gold Cooking Pot");
         add("tooltip.pasterdelight.molten_gold_cooking_pot.1", "§7▪ §9A cooking pot that doesn’t need a heat source and speeds up the cooking of all meals and drinks.");

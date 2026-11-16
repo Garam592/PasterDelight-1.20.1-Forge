@@ -33,6 +33,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
         basicItem(ModItems.GLASS_CUP_OF_FIG_JUICE.get());
         basicItem(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get());
+        basicItem(ModItems.SHROOMCLAW_ENERGY.get());
+        basicItem(ModItems.DYEDREAM_FRUIT_PIE.get());
+        basicItem(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get());
+        basicItem(ModItems.FIG_PIE.get());
+        basicItem(ModItems.FIG_PIE_SLICE.get());
+        basicItem(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get());
     }
 
     @Override

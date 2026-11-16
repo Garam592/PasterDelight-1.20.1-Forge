@@ -17,8 +17,20 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_FOOD_TAB = CREATIVE_MODE_TABS.register("pasterdream_food_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdelight.creative_mode_tab"))
-                    .icon(() -> new ItemStack(ModItems.TITANIUM_KNIFE.get()))
+                    .icon(() -> new ItemStack(ModBlocks.MOLTEN_GOLD_COOKING_POT.get()))
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
+                        output.accept(ModItems.GLASS_CUP_OF_FIG_JUICE.get());
+                        output.accept(ModItems.SHROOMCLAW_ENERGY.get());
+                        output.accept(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get());
+                        output.accept(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get());
+                        output.accept(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get());
+                        output.accept(ModItems.FIG_PIE_SLICE.get());
+                        output.accept(ModItems.DYEDREAM_FRUIT_PIE.get());
+                        output.accept(ModItems.FIG_PIE.get());
+
+                        output.accept(ModBlocks.MOLTEN_GOLD_COOKING_POT.get());
+
                         output.accept(ModItems.COPPER_KNIFE.get());
                         output.accept(ModItems.TITANIUM_KNIFE.get());
                         output.accept(ModItems.DYEDREAM_KNIFE.get());
@@ -27,12 +39,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get());
                         output.accept(ModItems.SHADOW_EROSION_KNIFE.get());
                         output.accept(ModItems.SHADOW_ALLOY_KNIFE.get());
-
-                        output.accept(ModItems.GLASS_CUP_OF_BARLEY_TEA.get());
-                        output.accept(ModItems.GLASS_CUP_OF_FIG_JUICE.get());
-                        output.accept(ModItems.MARTINI_GLASS_OF_AXOLOTL_SPECIAL_DRINK.get());
-
-                        output.accept(ModBlocks.MOLTEN_GOLD_COOKING_POT.get());
                     })
                     .build());
 

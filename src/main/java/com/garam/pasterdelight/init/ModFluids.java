@@ -4,9 +4,11 @@ import com.garam.pasterdelight.PasterDelight;
 import com.garam.pasterdelight.world.fluid.AxolotlSpecialDrinkFluid;
 import com.garam.pasterdelight.world.fluid.BarleyTeaFluid;
 import com.garam.pasterdelight.world.fluid.FigJuiceFluid;
+import com.garam.pasterdelight.world.fluid.ShroomclawEnergyFluid;
 import com.garam.pasterdelight.world.fluidtype.AxolotlSpecialDrinkFluidType;
 import com.garam.pasterdelight.world.fluidtype.BarleyTeaFluidType;
 import com.garam.pasterdelight.world.fluidtype.FigJuiceFluidType;
+import com.garam.pasterdelight.world.fluidtype.ShroomclawEnergyFluidType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
@@ -27,6 +29,9 @@ public class ModFluids {
 
     public static final RegistryObject<FluidType> AXOLOTL_SPECIAL_DRINK_TYPE = FLUID_TYPES.register("axolotl_special_drink", () -> AxolotlSpecialDrinkFluidType.TYPE);
     public static final RegistryObject<Fluid> AXOLOTL_SPECIAL_DRINK = FLUIDS.register("axolotl_special_drink", AxolotlSpecialDrinkFluid::new);
+
+    public static final RegistryObject<FluidType> SHROOMCLAW_ENERGY_TYPE = FLUID_TYPES.register("shroomclaw_energy", () -> ShroomclawEnergyFluidType.TYPE);
+    public static final RegistryObject<Fluid> SHROOMCLAW_ENERGY = FLUIDS.register("shroomclaw_energy", ShroomclawEnergyFluid::new);
 
     public static void register(IEventBus eventBus)
     {
