@@ -58,7 +58,7 @@ public class PasterDelightPieBlock extends PieBlock
 
             ItemStack resultStack = sliceStack.getItem().finishUsingItem(sliceStack, player.level(), player);
             ItemStack finalStack = ForgeEventFactory.onItemUseFinish(player, sliceStack, useDuration, resultStack);
-            if(!finalStack.isEmpty())
+            if(!player.isCreative() && !finalStack.isEmpty())
             {
                 if (!player.getInventory().add(finalStack))
                 {
