@@ -1,4 +1,4 @@
-package com.garam.pasterdelight.world.block;
+package com.garam.pasterdelight.world.block.pasterdelightpie;
 
 import com.mojang.datafixers.util.Pair;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;

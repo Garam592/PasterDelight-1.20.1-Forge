@@ -1,5 +1,6 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
+import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +16,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 //TODO: 改用帕斯特重生新版本依赖后，该处使用帕斯特重生的新接口，而不是反射
-public class MeltDreamKnifeItem extends RecipeMultiplyingKnifeItem{
+public class MeltDreamKnifeItem extends RecipeMultiplyingKnifeItem {
 
     private static final Method ON_INVENTORY_TICK;
     private static final Method APPEND_HOVER_TEXT;

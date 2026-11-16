@@ -1,5 +1,6 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
+import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
 import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.ShadowErosionTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -8,8 +9,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import java.util.List;
 
-public class ShadowErosionKnifeItem extends RecipeMultiplyingKnifeItem implements ShadowErosionTool, IRecipeMultiplyingKnife {
-
+public class ShadowErosionKnifeItem extends RecipeMultiplyingKnifeItem implements ShadowErosionTool
+{
     public ShadowErosionKnifeItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
         super(tier, attackDamage, attackSpeed, properties);
     }

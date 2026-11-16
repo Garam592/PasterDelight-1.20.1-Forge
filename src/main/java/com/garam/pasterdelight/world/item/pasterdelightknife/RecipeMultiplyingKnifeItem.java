@@ -1,4 +1,4 @@
-package com.garam.pasterdelight.world.item.knife;
+package com.garam.pasterdelight.world.item.pasterdelightknife;
 
 import com.garam.pasterdelight.helper.RecipeMultiplyingSwitch;
 import net.minecraft.world.InteractionHand;
