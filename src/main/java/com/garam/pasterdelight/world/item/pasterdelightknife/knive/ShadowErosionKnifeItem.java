@@ -16,8 +16,6 @@ public class ShadowErosionKnifeItem extends RecipeMultiplyingKnifeItem implement
     }
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_erosion_tool.1"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_erosion_tool.2"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.shadow_erosion_knife.quick_cutting"));
 
     }
