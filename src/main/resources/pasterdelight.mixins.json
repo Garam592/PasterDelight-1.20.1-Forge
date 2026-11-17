@@ -3,6 +3,7 @@
   "package": "com.garam.pasterdelight.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "pasterdelight.refmap.json",
+  "priority": 2000,
   "mixins":
   [
     "CookingPotBlockEntityMixin",
@@ -13,6 +14,7 @@
     "SkilletBlockEntityMixin",
     "SkilletRendererAccessor",
     "SkilletItemMixin"
+    "ItemStackFluffyWindAlloyTooltipMixin"
   ],
   "client":
   [

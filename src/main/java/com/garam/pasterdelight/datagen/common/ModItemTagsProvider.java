@@ -87,7 +87,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("pasterdream", "skill_cooldown")))
                 .add(ModItems.FLUFFY_WIND_ALLOY_KNIFE.get())
-                .add(ModItems.MELT_DREAM_KNIFE.get());
+                .add(ModItems.MELT_DREAM_KNIFE.get())
+                .add(ModItems.SHADOW_ALLOY_KNIFE.get());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("create", "upright_on_belt")))
                 .add(ModItems.LIGHT_BALL_FLUORESCENT_SAUCE.get())

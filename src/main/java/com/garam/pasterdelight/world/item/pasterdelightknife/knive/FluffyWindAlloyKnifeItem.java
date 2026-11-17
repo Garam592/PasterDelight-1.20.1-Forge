@@ -1,6 +1,7 @@
 package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
 import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -31,12 +32,13 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
         if (attacker instanceof Player player
                 && !player.level().isClientSide
                 && !player.getCooldowns().isOnCooldown(this)) {
-            player.getCooldowns().addCooldown(this, TRIPLE_HIT_COOLDOWN_TICKS);
+            SkillCooldownHelper.applySharedCooldown(player, TRIPLE_HIT_COOLDOWN_TICKS);
 
+            float skillDamageMultiplier = SkillCooldownHelper.getSkillDamageMultiplier(player);
             for (int i = 0; i < 2; i++) {
                 target.invulnerableTime = 0;
                 target.hurt(target.damageSources().playerAttack(player),
-                        (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE));
+                        (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE) * skillDamageMultiplier));
             }
         }
         return result;
@@ -52,6 +54,7 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive1"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive4"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.custom_tip"));
 
     }
