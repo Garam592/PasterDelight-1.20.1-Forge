@@ -23,6 +23,7 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.item.CookingPotItem;
 import vectorwing.farmersdelight.common.item.KnifeItem;
+import vectorwing.farmersdelight.common.item.SkilletItem;
 
 import java.util.List;
 
@@ -155,6 +156,11 @@ public class ModItems {
             tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_cooking_pot.2"));
             tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_cooking_pot.3"));
         }
+    });
+
+    public static final RegistryObject<Item> MOLTEN_GOLD_SKILLET = ITEMS.register("molten_gold_skillet", () -> new SkilletItem(ModBlocks.MOLTEN_GOLD_SKILLET.get(), new Item.Properties().stacksTo(1))
+    {
+
     });
     // 染梦合金平底锅（？）
 

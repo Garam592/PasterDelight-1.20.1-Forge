@@ -10,6 +10,10 @@
     "BlockEntityAccessor",
     "CuttingBoardBlockEntityMixin",
     "CuttingBoardBlockEntityAccessor",
+    "SkilletBlockEntityAccessor",
+    "SkilletBlockEntityMixin",
+    "SkilletRendererAccessor",
+    "SkilletItemMixin"
     "ItemStackFluffyWindAlloyTooltipMixin"
   ],
   "client":

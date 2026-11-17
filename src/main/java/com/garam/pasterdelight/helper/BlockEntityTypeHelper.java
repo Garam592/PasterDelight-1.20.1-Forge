@@ -1,8 +1,8 @@
-package com.garam.pasterdelight.world.block.pasterdelightcookingpot;
+package com.garam.pasterdelight.helper;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-public class CookingPotTypeHelper
+public class BlockEntityTypeHelper
 {
     private static final ThreadLocal<BlockEntityType<?>> PENDING_TYPE = new ThreadLocal<>();
 
