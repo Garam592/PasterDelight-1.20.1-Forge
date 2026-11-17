@@ -30,6 +30,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FIG_PIE.get());
 
                         output.accept(ModBlocks.MOLTEN_GOLD_COOKING_POT.get());
+                        output.accept(ModBlocks.MOLTEN_GOLD_SKILLET.get());
 
                         output.accept(ModItems.COPPER_KNIFE.get());
                         output.accept(ModItems.TITANIUM_KNIFE.get());

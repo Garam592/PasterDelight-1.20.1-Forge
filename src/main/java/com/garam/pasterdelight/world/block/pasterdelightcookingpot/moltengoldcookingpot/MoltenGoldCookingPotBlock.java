@@ -1,29 +1,20 @@
 package com.garam.pasterdelight.world.block.pasterdelightcookingpot.moltengoldcookingpot;
 
 import com.garam.pasterdelight.init.ModBlockEntities;
+import com.garam.pasterdelight.world.block.pasterdelightcookingpot.PasterDelightCookingPotBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
-import vectorwing.farmersdelight.common.block.CookingPotBlock;
-import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 import javax.annotation.Nullable;
 
-public class MoltenGoldCookingPotBlock extends CookingPotBlock
+public class MoltenGoldCookingPotBlock extends PasterDelightCookingPotBlock
 {
     public MoltenGoldCookingPotBlock()
     {
-        super(BlockBehaviour.Properties.copy(vectorwing.farmersdelight.common.registry.ModBlocks.COOKING_POT.get()).lightLevel(s->12));
+        super(BlockBehaviour.Properties.copy(vectorwing.farmersdelight.common.registry.ModBlocks.COOKING_POT.get()).lightLevel(blockState -> 12));
     }
 
     @Override
@@ -33,35 +24,8 @@ public class MoltenGoldCookingPotBlock extends CookingPotBlock
         return ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get().create(blockPosition, blockState);
     }
 
-    @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPosition, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult)
+    public BlockEntityType<MoltenGoldCookingPotBlockEntity> getBlockEntity()
     {
-        if (!level.isClientSide)
-        {
-            BlockEntity blockEntity = level.getBlockEntity(blockPosition);
-            if (blockEntity instanceof MoltenGoldCookingPotBlockEntity moltenGoldCookingPot)
-            {
-                NetworkHooks.openScreen((ServerPlayer) player, moltenGoldCookingPot, buffer -> buffer.writeBlockPos(blockPosition));
-            }
-        }
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity)
-    {
-        if (level.isClientSide)
-        {
-            return createTickerHelper(blockEntity, ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get(), MoltenGoldCookingPotBlockEntity::animationTick);
-        }
-            else
-            {
-                return createTickerHelper(blockEntity, ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get(), (tickLevel, blockPosition, blockState, cookingPot) ->
-                {
-                    CookingPotBlockEntity.cookingTick(tickLevel, blockPosition, blockState, cookingPot);
-                    cookingPot.tick();
-                });
-            }
+        return ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get();
     }
 }

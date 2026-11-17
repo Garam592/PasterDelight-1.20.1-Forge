@@ -8,7 +8,11 @@
     "CookingPotBlockEntityMixin",
     "BlockEntityAccessor",
     "CuttingBoardBlockEntityMixin",
-    "CuttingBoardBlockEntityAccessor"
+    "CuttingBoardBlockEntityAccessor",
+    "SkilletBlockEntityAccessor",
+    "SkilletBlockEntityMixin",
+    "SkilletRendererAccessor",
+    "SkilletItemMixin"
   ],
   "client":
   [

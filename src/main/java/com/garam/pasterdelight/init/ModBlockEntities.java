@@ -2,6 +2,7 @@ package com.garam.pasterdelight.init;
 
 import com.garam.pasterdelight.PasterDelight;
 import com.garam.pasterdelight.world.block.pasterdelightcookingpot.moltengoldcookingpot.MoltenGoldCookingPotBlockEntity;
+import com.garam.pasterdelight.world.block.pasterdelightskillet.moltengoldskillet.MoltenGoldSkilletBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,6 +14,7 @@ public class ModBlockEntities
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, PasterDelight.MOD_ID);
 
     public static final RegistryObject<BlockEntityType<MoltenGoldCookingPotBlockEntity>> MOLTEN_GOLD_COOKING_POT = BLOCK_ENTITIES.register("molten_gold_cooking_pot", () -> BlockEntityType.Builder.of(MoltenGoldCookingPotBlockEntity::new, ModBlocks.MOLTEN_GOLD_COOKING_POT.get()).build(null));
+    public static final RegistryObject<BlockEntityType<MoltenGoldSkilletBlockEntity>> MOLTEN_GOLD_SKILLET = BLOCK_ENTITIES.register("molten_gold_skillet", () -> BlockEntityType.Builder.of(MoltenGoldSkilletBlockEntity::new, ModBlocks.MOLTEN_GOLD_SKILLET.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {

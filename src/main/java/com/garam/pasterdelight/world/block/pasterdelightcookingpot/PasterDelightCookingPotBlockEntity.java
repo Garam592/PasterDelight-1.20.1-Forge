@@ -1,12 +1,12 @@
 package com.garam.pasterdelight.world.block.pasterdelightcookingpot;
 
+import com.garam.pasterdelight.helper.BlockEntityTypeHelper;
 import com.garam.pasterdelight.helper.GetBottomBlockCapability;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,7 +29,7 @@ public class PasterDelightCookingPotBlockEntity extends CookingPotBlockEntity
 
     private static BlockPos prepare(BlockPos blockPosition, BlockEntityType<?> blockEntityType)
     {
-        CookingPotTypeHelper.setPendingType(blockEntityType);
+        BlockEntityTypeHelper.setPendingType(blockEntityType);
         return blockPosition;
     }
 
@@ -83,18 +83,18 @@ public class PasterDelightCookingPotBlockEntity extends CookingPotBlockEntity
     }
 
     @Override
-    public void saveAdditional(CompoundTag tag)
+    public void saveAdditional(CompoundTag compoundTag)
     {
-        super.saveAdditional(tag);
-        tag.putBoolean("isInputSlotLimitStackSize", this.isInputSlotLimitStackSize);
+        super.saveAdditional(compoundTag);
+        compoundTag.putBoolean("isInputSlotLimitStackSize", this.isInputSlotLimitStackSize);
     }
 
     @Override
     public CompoundTag getUpdateTag()
     {
-        CompoundTag tag = super.getUpdateTag();
-        tag.putBoolean("isInputSlotLimitStackSize", this.isInputSlotLimitStackSize);
-        return tag;
+        CompoundTag compoundTag = super.getUpdateTag();
+        compoundTag.putBoolean("isInputSlotLimitStackSize", this.isInputSlotLimitStackSize);
+        return compoundTag;
     }
 
     public boolean getIsInputSlotLimitStackSize()
