@@ -1,6 +1,7 @@
 package com.garam.pasterdelight.world.item.pasterdelightknife.knive;
 
 import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKnifeItem;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.MeltDreamTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,9 +29,10 @@ public class MeltDreamKnifeItem extends RecipeMultiplyingKnifeItem implements Me
         if (attacker instanceof Player player
                 && !player.level().isClientSide
                 && !player.getCooldowns().isOnCooldown(this)) {
-            player.getCooldowns().addCooldown(this, MAGIC_HIT_COOLDOWN_TICKS);
+            SkillCooldownHelper.applySharedCooldown(player, MAGIC_HIT_COOLDOWN_TICKS);
 
-            float magicDamage = (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE) * 1.5);
+            float magicDamage = (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE) * 1.5
+                    * SkillCooldownHelper.getSkillDamageMultiplier(player));
 
             target.invulnerableTime = 0;
             target.hurt(player.damageSources().indirectMagic(player, player), magicDamage);
