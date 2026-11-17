@@ -13,7 +13,7 @@
     "SkilletBlockEntityAccessor",
     "SkilletBlockEntityMixin",
     "SkilletRendererAccessor",
-    "SkilletItemMixin"
+    "SkilletItemMixin",
     "ItemStackFluffyWindAlloyTooltipMixin"
   ],
   "client":
