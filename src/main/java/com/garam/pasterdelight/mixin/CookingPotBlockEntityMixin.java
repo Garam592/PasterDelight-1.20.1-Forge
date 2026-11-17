@@ -3,11 +3,14 @@ package com.garam.pasterdelight.mixin;
 import com.garam.pasterdelight.world.block.pasterdelightcookingpot.CookingPotTypeHelper;
 import com.garam.pasterdelight.world.block.pasterdelightcookingpot.PasterDelightCookingPotBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
@@ -22,5 +25,11 @@ public class CookingPotBlockEntityMixin
         {
             ((BlockEntityAccessor) this).pasterdelight$setType(pending);
         }
+    }
+
+    @Redirect(method = "getMealFromItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
+    private static boolean redirectIsCheck(ItemStack stack, Item item)
+    {
+        return true;
     }
 }

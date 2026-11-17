@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import vectorwing.farmersdelight.common.block.CookingPotBlock;
+import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 import javax.annotation.Nullable;
 
@@ -50,7 +51,17 @@ public class MoltenGoldCookingPotBlock extends CookingPotBlock
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity)
     {
-        BlockEntityTicker<T> ticker = level.isClientSide ? createTickerHelper(blockEntity, ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get(), MoltenGoldCookingPotBlockEntity::animationTick) : createTickerHelper(blockEntity, ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get(), MoltenGoldCookingPotBlockEntity::cookingTick);
-        return ticker;
+        if (level.isClientSide)
+        {
+            return createTickerHelper(blockEntity, ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get(), MoltenGoldCookingPotBlockEntity::animationTick);
+        }
+            else
+            {
+                return createTickerHelper(blockEntity, ModBlockEntities.MOLTEN_GOLD_COOKING_POT.get(), (tickLevel, blockPosition, blockState, cookingPot) ->
+                {
+                    CookingPotBlockEntity.cookingTick(tickLevel, blockPosition, blockState, cookingPot);
+                    cookingPot.tick();
+                });
+            }
     }
 }
