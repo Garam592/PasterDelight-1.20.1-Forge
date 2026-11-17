@@ -6,7 +6,6 @@ import com.pasterdream.pasterdreammod.world.item.shadowalloytool.ShadowAlloyTool
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -30,8 +29,8 @@ public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements 
     //战技冷却：2秒
     private static final int SKILL_COOLDOWN_TICKS = 40;
 
+    //暗影合金被动：理智浮动（withSanVariability 是包级私有方法，只能反射调用）
     private static final Method WITH_SAN_VARIABILITY;
-    private static final Method ON_INVENTORY_TICK;
 
     static {
         try {
@@ -40,9 +39,6 @@ public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements 
             WITH_SAN_VARIABILITY = helper.getDeclaredMethod(
                     "withSanVariability", EquipmentSlot.class, Multimap.class);
             WITH_SAN_VARIABILITY.setAccessible(true);
-            ON_INVENTORY_TICK = helper.getDeclaredMethod(
-                    "onInventoryTick", ItemStack.class, Level.class, Entity.class, int.class, boolean.class);
-            ON_INVENTORY_TICK.setAccessible(true);
         } catch (ClassNotFoundException | NoSuchMethodException e) {
             throw new RuntimeException("Failed to resolve ShadowAlloyToolHelper", e);
         }
@@ -61,17 +57,6 @@ public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements 
                     null, slot, super.getAttributeModifiers(slot, stack));
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException("Failed to invoke ShadowAlloyToolHelper.withSanVariability", e);
-        }
-    }
-
-    //暗影合金被动：持有受损工具时每10tick扣理智并修复耐久
-    @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack, level, entity, slot, selected);
-        try {
-            ON_INVENTORY_TICK.invoke(null, stack, level, entity, slot, selected);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException("Failed to invoke ShadowAlloyToolHelper.onInventoryTick", e);
         }
     }
 
@@ -112,13 +97,7 @@ public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements 
         tooltip.add(Component.translatable("tooltip.pasterdelight.shadow_alloy_knife.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.shadow_alloy_knife.desc1"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.shadow_alloy_knife.desc2"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.passive"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.1"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.2"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.3"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.shadow_alloy_tool.backstabbing"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.repair_header"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.repair"));
     }
 
     @Override

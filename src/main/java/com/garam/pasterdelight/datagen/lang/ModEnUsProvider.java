@@ -33,8 +33,9 @@ public class ModEnUsProvider extends LanguageProvider {
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.desc2","§7▪ §9Cooldown: 3s");
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive_name","Passive:§bSwift as the wind");
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive1","§7▪ §9This tool comes with Looting II built-in and can stack with enchantments");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2","§7▪ §9The faster you move, the faster you mine");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3","§7▪ §9Drops are swept to you by the wind when breaking blocks");
+        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2","§7▪ §9Attacks deal additional lightning damage");
+        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3","§7▪ §9The faster you move, the faster you mine and the higher your attack damage");
+        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive4","§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.custom_tip","§7§o--Swift as the wind, orderly as the forest, fierce as fire, unfathomable as darkness.");
 
         // Lamp Shadow Knife

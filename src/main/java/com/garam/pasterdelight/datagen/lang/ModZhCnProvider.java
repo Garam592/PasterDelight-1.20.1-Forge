@@ -33,8 +33,9 @@ public class ModZhCnProvider extends LanguageProvider {
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.desc2","§7▪ §9冷却：3秒");
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive_name","被动：§b其疾如风");
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive1","§7▪ §9该工具自带抢夺II效果，可以和附魔叠加");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2","§7▪ §9移动速度越快，挖掘速度越快");
-        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3","§7▪ §9破坏方块时，掉落物会被风卷至身边");
+        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2","§7▪ §9攻击附带雷电伤害");
+        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3","§7▪ §9移动速度越快，挖掘速度越快，攻击伤害越高");
+        add("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive4","§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
         add("tooltip.pasterdelight.fluffy_wind_alloy_knife.custom_tip","§7§o--疾如风，徐如林，掠如火，难知如阴");
 
         //灯影系列刀

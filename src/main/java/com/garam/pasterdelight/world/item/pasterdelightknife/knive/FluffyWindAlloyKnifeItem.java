@@ -52,6 +52,7 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive1"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive2"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive3"));
+        tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive4"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.custom_tip"));
 
     }
