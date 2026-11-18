@@ -11,7 +11,7 @@
     "CuttingBoardBlockEntityMixin",
     "CuttingBoardBlockEntityAccessor",
     "ItemStackFluffyWindAlloyTooltipMixin",
-    "VanillaFoodSanHandlerMixin"
+    "VanillaFoodSanHandlerMixin",
     "SkilletBlockEntityAccessor",
     "SkilletBlockEntityMixin",
     "SkilletRendererAccessor",
