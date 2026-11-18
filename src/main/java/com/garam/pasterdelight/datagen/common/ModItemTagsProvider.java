@@ -2,6 +2,7 @@ package com.garam.pasterdelight.datagen.common;
 
 import com.garam.pasterdelight.PasterDelight;
 import com.garam.pasterdelight.init.ModItems;
+import com.garam.pasterdelight.tags.ModItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -102,5 +103,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("farmersdelight", "sweets")))
                 .add(ModItems.DYEDREAM_FRUIT_PIE_SLICE.get())
                 .add(ModItems.FIG_PIE_SLICE.get());
+
+        // 带有该标签的食物走 san 恢复系统：把农夫乐事的 meals 标签整包纳入
+        tag(ModItemTags.PASTERDELIGHT_RECOVER_SANITY)
+                .addOptionalTag(ResourceLocation.fromNamespaceAndPath("farmersdelight", "meals"))
+                .addOptionalTag(ResourceLocation.fromNamespaceAndPath("farmersdelight", "snacks"));
     }
 }

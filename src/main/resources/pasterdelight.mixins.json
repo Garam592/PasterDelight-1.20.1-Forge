@@ -10,7 +10,8 @@
     "BlockEntityAccessor",
     "CuttingBoardBlockEntityMixin",
     "CuttingBoardBlockEntityAccessor",
-    "ItemStackFluffyWindAlloyTooltipMixin"
+    "ItemStackFluffyWindAlloyTooltipMixin",
+    "VanillaFoodSanHandlerMixin"
   ],
   "client":
   [
