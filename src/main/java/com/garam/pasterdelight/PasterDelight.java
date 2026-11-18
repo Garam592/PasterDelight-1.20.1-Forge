@@ -1,5 +1,6 @@
 package com.garam.pasterdelight;
 
+import com.garam.pasterdelight.event.TagsFoodSanHandler;
 import com.garam.pasterdelight.init.*;
 import com.garam.pasterdelight.world.item.pasterdelightknife.knive.FluffyWindAlloyKnifeItem;
 import com.mojang.logging.LogUtils;
@@ -50,6 +51,7 @@ public class PasterDelight
 
         MinecraftForge.EVENT_BUS.addListener(PasterDelight::onItemAttributeModifier);
         MinecraftForge.EVENT_BUS.register(FluffyWindAlloyKnifeItem.LootingHandler.class);
+        MinecraftForge.EVENT_BUS.register(TagsFoodSanHandler.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
