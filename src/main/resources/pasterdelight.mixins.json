@@ -12,6 +12,11 @@
     "CuttingBoardBlockEntityAccessor",
     "ItemStackFluffyWindAlloyTooltipMixin",
     "VanillaFoodSanHandlerMixin"
+    "SkilletBlockEntityAccessor",
+    "SkilletBlockEntityMixin",
+    "SkilletRendererAccessor",
+    "SkilletItemMixin",
+    "ItemStackFluffyWindAlloyTooltipMixin"
   ],
   "client":
   [

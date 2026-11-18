@@ -79,6 +79,8 @@ public class ModEnUsProvider extends LanguageProvider {
         add("tooltip.pasterdelight.限制外部输入堆叠上限为1", "Limit External Input Stack Size To 1");
         add("tooltip.pasterdelight.不限制外部输入堆叠上限", "Unlimit External Input Stack Size");
 
+        add(ModBlocks.MOLTEN_GOLD_SKILLET.get(), "Molten Gold Skillet");
+
         add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
 
     }

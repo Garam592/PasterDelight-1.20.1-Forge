@@ -62,6 +62,8 @@ public class PasterDelight
     private void clientSetup(final FMLClientSetupEvent event)
     {
         ModScreens.register(event);
+        ModItemRenderer.FMLClientSetupEventRegister(event);
+        ModBlockEntityRenderer.FMLClientSetupEventRegister(event);
     }
 
     public static void onItemAttributeModifier(ItemAttributeModifierEvent event)
