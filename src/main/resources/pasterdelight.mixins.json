@@ -16,7 +16,7 @@
     "SkilletBlockEntityMixin",
     "SkilletRendererAccessor",
     "SkilletItemMixin",
-    "ItemStackFluffyWindAlloyTooltipMixin"
+    "EnchantmentHelperBuiltInEnchantmentsMixin"
   ],
   "client":
   [
