@@ -80,6 +80,10 @@ public class ModEnUsProvider extends LanguageProvider {
         add("tooltip.pasterdelight.不限制外部输入堆叠上限", "Unlimit External Input Stack Size");
 
         add(ModBlocks.MOLTEN_GOLD_SKILLET.get(), "Molten Gold Skillet");
+        add("tooltip.pasterdelight.molten_gold_skillet.1", "§7▪ §9Skillet pan that doesn’t need heat");
+        add("tooltip.pasterdelight.molten_gold_skillet.2", "§7▪ §9When there's a container below, automatically put the skillet pan's output into it");
+        add("tooltip.pasterdelight.molten_gold_skillet.3", "§7▪ §9Applies a burning effect when hitting an entity, dealing 20% extra damage while the entity is on fire");
+        add("tooltip.pasterdelight.molten_gold_skillet.4", "§7§o--A \"Kun Jin Kao\" in my left hand, a \"0xCC 0xCC 0xCC\" in my right");
 
         add("itemGroup.pasterdelight.creative_mode_tab","PasterDelight");
 

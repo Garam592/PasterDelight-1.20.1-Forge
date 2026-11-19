@@ -9,6 +9,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -25,6 +26,7 @@ import vectorwing.farmersdelight.common.item.enchantment.BackstabbingEnchantment
 public abstract class EnchantmentHelperBuiltInEnchantmentsMixin {
 
     /** 萦风合金刀内置抢夺等级（抢夺II） */
+    @Unique
     private static final int FLUFFY_WIND_LOOTING_BUILT_IN_LEVEL = 2;
 
     @Inject(method = "getItemEnchantmentLevel", at = @At("RETURN"), cancellable = true)

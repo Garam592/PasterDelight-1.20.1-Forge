@@ -16,6 +16,7 @@
     "SkilletBlockEntityMixin",
     "SkilletRendererAccessor",
     "SkilletItemMixin",
+    "SkilletEventsMixin",
     "EnchantmentHelperBuiltInEnchantmentsMixin"
   ],
   "client":
