@@ -42,10 +42,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
 
         //战利品
-        //generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of
-        //        (
-        //            new LootTableProvider.SubProviderEntry(ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK)
-        //        )));
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK))));
 
         //物品，方块模型
         generator.addProvider(event.includeClient(), new ModItemModelsProvider(packOutput, existingFileHelper));
