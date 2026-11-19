@@ -157,10 +157,17 @@ public class ModItems {
             tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_cooking_pot.3"));
         }
     });
-
+    // 炙焰金平底锅
     public static final RegistryObject<Item> MOLTEN_GOLD_SKILLET = ITEMS.register("molten_gold_skillet", () -> new SkilletItem(ModBlocks.MOLTEN_GOLD_SKILLET.get(), new Item.Properties().stacksTo(1))
     {
-
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            super.appendHoverText(stack, level, tooltip, flag);
+            tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.2"));
+            tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.3"));
+            tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.4"));
+        }
     });
     // 染梦合金平底锅（？）
 

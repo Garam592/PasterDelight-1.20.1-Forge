@@ -152,6 +152,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()),
                         has(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()))
                 .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.MOLTEN_GOLD_SKILLET.get())
+                .pattern(" aa")
+                .pattern(" aa")
+                .pattern("b  ")
+                .define('a', com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get())
+                .define('b', Items.BLAZE_ROD)
+                .unlockedBy(getHasName(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()),
+                        has(com.pasterdream.pasterdreammod.init.ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(consumer);
     }
     // 烹饪配方
     private void CookingRecipes(Consumer<FinishedRecipe> consumer){
