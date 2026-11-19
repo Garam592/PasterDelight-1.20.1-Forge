@@ -43,17 +43,16 @@ public abstract class PasterDelightSkilletBlock extends SkilletBlock
     @Override
     public void onRemove(BlockState state, Level level, BlockPos blockPosition, BlockState newState, boolean isMoving)
     {
-        super.onRemove(state, level, blockPosition, newState, isMoving);
-
         if (!state.is(newState.getBlock()) && level.getBlockEntity(blockPosition) instanceof PasterDelightSkilletBlockEntity pasterDelightSkillet)
         {
-            ItemStack output = pasterDelightSkillet.takeOutput();
-
+            ItemStack output = pasterDelightSkillet.getOutput();
             if (!output.isEmpty())
             {
                 Containers.dropItemStack(level, blockPosition.getX(), blockPosition.getY(), blockPosition.getZ(), output);
+                pasterDelightSkillet.setOutput(ItemStack.EMPTY);
             }
         }
+        super.onRemove(state, level, blockPosition, newState, isMoving);
     }
 
     public abstract <T extends PasterDelightSkilletBlockEntity> BlockEntityType<T> getBlockEntity();
