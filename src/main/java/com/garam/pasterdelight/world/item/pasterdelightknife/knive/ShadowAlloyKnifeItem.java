@@ -72,25 +72,27 @@ public class ShadowAlloyKnifeItem extends RecipeMultiplyingKnifeItem implements 
                 && !player.getCooldowns().isOnCooldown(this)) {
             SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
 
-            float attackDamage = (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+            float attackDamage = (float) ((player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+                    + EnchantmentHelper.getDamageBonus(stack, target.getMobType()))
                     * SkillCooldownHelper.getSkillDamageMultiplier(player));
 
-            int enchantLevel = EnchantmentHelper.getItemEnchantmentLevel(
+            // 背刺等级已含内置背刺II（mixin 注入 +2）
+            int backstabbingLevel = EnchantmentHelper.getItemEnchantmentLevel(
                     ModEnchantments.BACKSTABBING.get(), stack);
-            int effectiveLevel = 1 + enchantLevel;
-            boolean behind = BackstabbingEnchantment.isLookingBehindTarget(target, player.position());
+
+            float backstabDamage = BackstabbingEnchantment.getBackstabbingDamagePerLevel(
+                    attackDamage, backstabbingLevel);
 
             target.invulnerableTime = 0;
-
-            if (enchantLevel > 0 && behind) {
-                target.hurt(player.damageSources().playerAttack(player), attackDamage);
-            } else {
-                float backstabDamage = BackstabbingEnchantment.getBackstabbingDamagePerLevel(
-                        attackDamage, effectiveLevel);
+            // 战技期间屏蔽内置背刺，避免 FD 背刺事件对技能伤害二次触发
+            ShadowAlloyKnifeBackstabbing.suppress(true);
+            try {
                 target.hurt(player.damageSources().playerAttack(player), backstabDamage);
-                target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                        SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.PLAYERS, 1.0F, 1.0F);
+            } finally {
+                ShadowAlloyKnifeBackstabbing.suppress(false);
             }
+            target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
+                    SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
         return result;
     }

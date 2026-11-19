@@ -4,16 +4,14 @@ import com.garam.pasterdelight.world.item.pasterdelightknife.RecipeMultiplyingKn
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyTool;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LootingLevelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.List;
 
@@ -35,10 +33,12 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
             SkillCooldownHelper.applySharedCooldown(player, TRIPLE_HIT_COOLDOWN_TICKS);
 
             float skillDamageMultiplier = SkillCooldownHelper.getSkillDamageMultiplier(player);
+            float attackDamage = (float) ((player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+                    + EnchantmentHelper.getDamageBonus(stack, target.getMobType()))
+                    * skillDamageMultiplier);
             for (int i = 0; i < 2; i++) {
                 target.invulnerableTime = 0;
-                target.hurt(target.damageSources().playerAttack(player),
-                        (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE) * skillDamageMultiplier));
+                target.hurt(target.damageSources().playerAttack(player), attackDamage);
             }
         }
         return result;
@@ -57,18 +57,6 @@ public class FluffyWindAlloyKnifeItem extends RecipeMultiplyingKnifeItem impleme
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.passive4"));
         tooltip.add(Component.translatable("tooltip.pasterdelight.fluffy_wind_alloy_knife.custom_tip"));
 
-    }
-
-    public static class LootingHandler {
-        @SubscribeEvent
-        public static void onLootingLevel(LootingLevelEvent event) {
-            DamageSource source = event.getDamageSource();
-            if (source != null
-                    && source.getEntity() instanceof Player player
-                    && player.getMainHandItem().getItem() instanceof FluffyWindAlloyKnifeItem) {
-                event.setLootingLevel(event.getLootingLevel() + 2);
-            }
-        }
     }
 
     @Override

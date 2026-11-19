@@ -46,7 +46,7 @@ public class ModZhCnProvider extends LanguageProvider {
         add("tooltip.pasterdelight.shadow_alloy_knife.quick_cutting","§7▪ §9使用该刀在砧板处理菜品时，一次处理32个，潜行右键以开关该功能");
         add("tooltip.pasterdelight.shadow_alloy_knife.desc1","§7▪ §9攻击命中时，该次攻击造成200%伤害并视为背刺攻击");
         add("tooltip.pasterdelight.shadow_alloy_knife.desc2","§7▪ §9冷却：2秒");
-        add("tooltip.pasterdelight.shadow_alloy_tool.backstabbing","§7▪ §9该武器自带背刺I效果，可以和附魔叠加");
+        add("tooltip.pasterdelight.shadow_alloy_tool.backstabbing","§7▪ §9该武器自带背刺II效果，可以和附魔叠加");
 
         add("message.pasterdelight.cutting_recipe_multiplying_enable", "§a[批量砧板配方处理] 开启");
         add("message.pasterdelight.cutting_recipe_multiplying_disable", "§c[批量砧板配方处理] 关闭");

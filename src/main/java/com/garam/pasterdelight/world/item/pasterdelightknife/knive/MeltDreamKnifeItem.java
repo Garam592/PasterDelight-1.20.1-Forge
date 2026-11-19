@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -31,7 +32,8 @@ public class MeltDreamKnifeItem extends RecipeMultiplyingKnifeItem implements Me
                 && !player.getCooldowns().isOnCooldown(this)) {
             SkillCooldownHelper.applySharedCooldown(player, MAGIC_HIT_COOLDOWN_TICKS);
 
-            float magicDamage = (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE) * 1.5
+            float magicDamage = (float) ((player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+                    + EnchantmentHelper.getDamageBonus(stack, target.getMobType())) * 1.5
                     * SkillCooldownHelper.getSkillDamageMultiplier(player));
 
             target.invulnerableTime = 0;
