@@ -8,6 +8,8 @@ import com.garam.pasterdelight.datagen.client.ModItemModelsProvider;
 import com.garam.pasterdelight.datagen.common.ModBlockTagsProvider;
 import com.garam.pasterdelight.datagen.common.ModItemTagsProvider;
 import com.garam.pasterdelight.datagen.common.ModRecipeProvider;
+import com.garam.pasterdelight.datagen.common.ModChestLootProvider;
+import com.garam.pasterdelight.datagen.common.ModLootModifierProvider;
 import com.garam.pasterdelight.datagen.lang.ModEnUsProvider;
 import com.garam.pasterdelight.datagen.lang.ModZhCnProvider;
 import net.minecraft.core.HolderLookup;
@@ -41,11 +43,13 @@ public class ModDataGenerator {
         BlockTagsProvider blockTagsProvider = generator.addProvider(event.includeServer(), new ModBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
 
-        //战利品
-        //generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of
-        //        (
-        //            new LootTableProvider.SubProviderEntry(ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK)
-        //        )));
+        //战利品（用于注入）
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(
+                new LootTableProvider.SubProviderEntry(ModChestLootProvider::new, LootContextParamSets.CHEST)
+        )));
+
+        //全局战利品修改器
+        generator.addProvider(event.includeServer(), new ModLootModifierProvider(packOutput));
 
         //物品，方块模型
         generator.addProvider(event.includeClient(), new ModItemModelsProvider(packOutput, existingFileHelper));

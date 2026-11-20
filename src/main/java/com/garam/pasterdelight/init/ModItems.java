@@ -167,6 +167,7 @@ public class ModItems {
             tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.2"));
             tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.3"));
             tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.4"));
+            tooltip.add(Component.translatable("tooltip.pasterdelight.molten_gold_skillet.5"));
         }
     });
     // 染梦合金平底锅（？）
