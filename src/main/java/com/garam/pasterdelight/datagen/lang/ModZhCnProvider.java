@@ -79,10 +79,11 @@ public class ModZhCnProvider extends LanguageProvider {
         add("tooltip.pasterdelight.不限制外部输入堆叠上限", "不限制外部输入堆叠上限");
 
         add(ModBlocks.MOLTEN_GOLD_SKILLET.get(), "炙焰金煎锅");
-        add("tooltip.pasterdelight.molten_gold_skillet.1", "§7▪ §9无需热源的煎锅");
-        add("tooltip.pasterdelight.molten_gold_skillet.2", "§7▪ §9下方有容器时，自动将煎锅输出物放入其中");
-        add("tooltip.pasterdelight.molten_gold_skillet.3", "§7▪ §9击中实体时施加燃烧效果，当实体在燃烧时，造成20%额外伤害");
-        add("tooltip.pasterdelight.molten_gold_skillet.4", "§7§o--左手一个锟斤拷，右手直呼烫烫烫");
+        add("tooltip.pasterdelight.molten_gold_skillet.1", "§7▪ §9无需热源的煎锅，可使用外部物流输入原材料");
+        add("tooltip.pasterdelight.molten_gold_skillet.2", "§7▪ §9生成的产物不会以掉落物的形式调出来，而是仍然留在煎锅中，右键以取出");
+        add("tooltip.pasterdelight.molten_gold_skillet.3", "§7▪ §9下方有容器时，自动将煎锅输出物放入其中");
+        add("tooltip.pasterdelight.molten_gold_skillet.4", "§7▪ §9击中实体时施加燃烧效果，当实体在燃烧时，造成20%额外伤害");
+        add("tooltip.pasterdelight.molten_gold_skillet.5", "§7§o--左手一个锟斤拷，右手直呼烫烫烫");
         //创造模式物品栏
         add("itemGroup.pasterdelight.creative_mode_tab","帕斯特乐事");
     }
