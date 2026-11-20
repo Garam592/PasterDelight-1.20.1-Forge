@@ -36,7 +36,7 @@ public class VanillaFoodSanHandlerMixin
     @Inject(method = "onFoodEaten", at = @At("HEAD"), remap = false)
     private static void pasterdelight$captureEatenTagged(LivingEntityUseItemEvent.Finish event, CallbackInfo ci)
     {
-        pasterdelight$stripEatenSan = event.getItem().is(ModItemTags.PASTERDELIGHT_RECOVER_SANITY);
+        pasterdelight$stripEatenSan = event.getItem().is(ModItemTags.RECOVER_SANITY);
     }
 
     @Redirect(
@@ -56,7 +56,7 @@ public class VanillaFoodSanHandlerMixin
     @Inject(method = "onItemTooltip", at = @At("HEAD"), remap = false)
     private static void pasterdelight$captureTooltipTagged(ItemTooltipEvent event, CallbackInfo ci)
     {
-        pasterdelight$stripTooltipSan = event.getItemStack().is(ModItemTags.PASTERDELIGHT_RECOVER_SANITY);
+        pasterdelight$stripTooltipSan = event.getItemStack().is(ModItemTags.RECOVER_SANITY);
     }
 
     @Redirect(

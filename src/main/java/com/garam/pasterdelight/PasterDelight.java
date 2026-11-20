@@ -1,7 +1,7 @@
 package com.garam.pasterdelight;
 
 import com.garam.pasterdelight.event.MoltenGoldSkilletFireHandler;
-import com.garam.pasterdelight.event.TagsFoodSanHandler;
+import com.garam.pasterdelight.event.TagsFoodHandler;
 import com.garam.pasterdelight.init.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -51,7 +51,7 @@ public class PasterDelight
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         MinecraftForge.EVENT_BUS.addListener(PasterDelight::onItemAttributeModifier);
-        MinecraftForge.EVENT_BUS.register(TagsFoodSanHandler.class);
+        MinecraftForge.EVENT_BUS.register(TagsFoodHandler.class);
         MinecraftForge.EVENT_BUS.register(MoltenGoldSkilletFireHandler.class);
     }
 
