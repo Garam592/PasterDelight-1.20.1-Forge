@@ -43,10 +43,9 @@ public class ModDataGenerator {
         BlockTagsProvider blockTagsProvider = generator.addProvider(event.includeServer(), new ModBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
 
-        //战利品
-        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK))));
-        //战利品（用于注入）
+        //战利品（方块掉落 + 注入箱子表）
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(
+                new LootTableProvider.SubProviderEntry(ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK),
                 new LootTableProvider.SubProviderEntry(ModChestLootProvider::new, LootContextParamSets.CHEST)
         )));
 
