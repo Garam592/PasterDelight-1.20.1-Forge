@@ -178,7 +178,7 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
     @Override
     public ItemStack removeItem()
     {
-        ItemStack cooked = takeOutput();
+        ItemStack cooked = getOutput();
 
         if (!cooked.isEmpty())
         {
@@ -192,18 +192,14 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
             }
     }
 
-    public ItemStack takeOutput()
+    public ItemStack getOutput()
     {
-        if (!outputItemStack.isEmpty())
-        {
-            ItemStack buffer = outputItemStack.copy();
-            outputItemStack = ItemStack.EMPTY;
-            return buffer;
-        }
-            else
-            {
-                return ItemStack.EMPTY;
-            }
+        return outputItemStack;
+    }
+
+    public void setOutput(ItemStack itemStack)
+    {
+        outputItemStack = itemStack;
     }
 
     public void tick()
