@@ -48,40 +48,17 @@ public abstract class SkilletEventsMixin
     {
         DamageSource damageSource = event.getSource();
         Entity attacker = damageSource.getDirectEntity();
-        if (!(attacker instanceof LivingEntity livingEntity)) return;
-
-        ItemStack stack = livingEntity.getItemInHand(InteractionHand.MAIN_HAND);
-        if (!(stack.getItem() instanceof ISkilletAttackSoundProvider provider)) return; // 非第三方煎锅，交给原逻辑
-
-        boolean strong;
-        if (livingEntity instanceof Player player)
+        if(attacker instanceof LivingEntity livingEntity)
         {
-            strong = player.getAttackStrengthScale(0.0F) > 0.8F;
-        }
-        else
-        {
-            strong = true;
-        }
-
-        SoundEvent sound = provider.getSkilletAttackSound(stack, livingEntity, strong);
-
-        float pitch = 0.9F + (livingEntity.getRandom().nextFloat() * 0.2F);
-        if (livingEntity instanceof Player player)
-        {
-            if (strong)
+            ItemStack skillteItemStack = livingEntity.getItemInHand(InteractionHand.MAIN_HAND);
+            if(skillteItemStack.getItem() instanceof ISkilletAttackSoundProvider skilletAttackSoundProvider)
             {
-                player.getCommandSenderWorld().playSound(null, player.getX(), player.getY(), player.getZ(), sound, SoundSource.PLAYERS, 1.0F, pitch);
-            }
-            else
-            {
-                player.getCommandSenderWorld().playSound(null, player.getX(), player.getY(), player.getZ(), sound, SoundSource.PLAYERS, 0.8F, 0.9F);
+                boolean isStrong = !(livingEntity instanceof Player player) || player.getAttackStrengthScale(0.0F) > 0.8F;
+                SoundEvent sound = skilletAttackSoundProvider.getSkilletAttackSound(skillteItemStack, livingEntity, isStrong);
+                float pitch = 0.9F + (livingEntity.getRandom().nextFloat() * 0.2F);
+                livingEntity.getCommandSenderWorld().playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), sound, SoundSource.PLAYERS, isStrong ? 1F : 0.8F, isStrong ? pitch : 0.9F);
+                ci.cancel();
             }
         }
-        else
-        {
-            livingEntity.getCommandSenderWorld().playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), sound, SoundSource.PLAYERS, 1.0F, pitch);
-        }
-
-        ci.cancel();
     }
 }
