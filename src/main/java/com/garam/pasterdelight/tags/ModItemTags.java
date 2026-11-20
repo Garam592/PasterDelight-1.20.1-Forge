@@ -10,7 +10,9 @@ import net.minecraft.world.item.Item;
 public class ModItemTags {
 
     // 带有该标签的食物将会走新系统恢复san
-    public static final TagKey<Item> PASTERDELIGHT_RECOVER_SANITY = bind("pasterdelight_recover_sanity");
+    public static final TagKey<Item> RECOVER_SANITY = bind("recover_sanity");
+
+    public static final TagKey<Item> GIVE_COOK_BUFF = bind("give_cook_buff");
 
     private static TagKey<Item> bind(String pName) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PasterDelight.MOD_ID, pName));

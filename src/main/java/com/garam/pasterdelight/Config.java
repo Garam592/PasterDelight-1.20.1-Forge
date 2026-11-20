@@ -1,63 +1,66 @@
 package com.garam.pasterdelight;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-// An example config class. This is not required, but it's a good idea to have one to keep your config organized.
-// Demonstrates how to use Forge's config APIs
 @Mod.EventBusSubscriber(modid = PasterDelight.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to log the dirt block on common setup")
-            .define("logDirtBlock", true);
+    private static final ForgeConfigSpec.DoubleValue SAN_PER_SATURATION = BUILDER
+                .comment("帕斯特的食物回复san系统配置"
+                        + "\n带有pasterdelight:recover_sanity标签食物每多少饱和度回复1san（保留1位小数），默认为6")
+               .defineInRange("san_per_saturation", 6.0, 1, Integer.MAX_VALUE);
 
-    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-            .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.DoubleValue MIN_EFFECTIVE_SATURATION_FOR_SAN = BUILDER
+            .comment("带有pasterdelight:recover_sanity标签食物能恢复san所需的最小饱和度，默认为6")
+            .defineInRange("min_effective_saturation_for_san", 6.0, 0, Integer.MAX_VALUE);
 
-    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-            .comment("What you want the introduction message to be for the magic number")
-            .define("magicNumberIntroduction", "The magic number is... ");
+    private static final ForgeConfigSpec.DoubleValue MAX_EFFECTIVE_SATURATION_FOR_SAN = BUILDER
+            .comment("带有pasterdelight:recover_sanity标签食物能恢复san限制的最大饱和度，默认为30，食物饱和度大于该值将会按照最大值对应的回san量给予回复")
+            .defineInRange("max_effective_saturation_for_san", 30.0, 0, Integer.MAX_VALUE);
 
-    // a list of strings that are treated as resource locations for items
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-            .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+    private static final ForgeConfigSpec.IntValue COOK_BASE_SECONDS = BUILDER
+            .comment("带有pasterdelight:give_cook_buff标签食物初始能获得的料理buff时长（单位：秒），默认为30")
+            .defineInRange("cook_base_seconds", 30, 0, Integer.MAX_VALUE);
+
+    private static final ForgeConfigSpec.IntValue COOK_SATURATION_PER_STEP = BUILDER
+            .comment("带有pasterdelight:give_cook_buff标签食物每多少饱和度增加料理buff持续时间，默认为5")
+            .defineInRange("cook_saturation_per_step", 5, 1, Integer.MAX_VALUE);
+
+    private static final ForgeConfigSpec.IntValue COOK_SECONDS_PER_STEP = BUILDER
+            .comment("带有pasterdelight:give_cook_buff标签食物每次增加多少料理buff时长（单位：秒），默认为30")
+            .defineInRange("cook_seconds_per_step", 30, 0, Integer.MAX_VALUE);
+
+    private static final ForgeConfigSpec.IntValue COOK_SATURATION_PER_LEVEL = BUILDER
+            .comment("带有pasterdelight:give_cook_buff标签食物每多少饱和度增加料理buff效果等级，默认为15")
+            .defineInRange("cook_saturation_per_level", 15, 1, Integer.MAX_VALUE);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
-
-    public static boolean logDirtBlock;
-    public static int magicNumber;
-    public static String magicNumberIntroduction;
-    public static Set<Item> items;
-
-    private static boolean validateItemName(final Object obj)
-    {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(ResourceLocation.parse(itemName));
-    }
+    public static double SanPerSaturation;
+    public static double MinEffectiveSaturationForSan;
+    public static double MaxEffectiveSaturationForSan;
+    public static int CookBaseSeconds;
+    public static int CookSaturationPerStep;
+    public static int CookSecondsPerStep;
+    public static int CookSaturationPerLevel;
 
     @SubscribeEvent
-    static void onLoad(final ModConfigEvent event)
-    {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
-        magicNumber = MAGIC_NUMBER.get();
-        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+    static void onLoad(final ModConfigEvent event) {
+        if (event.getConfig().getSpec() != SPEC) return;
+        SanPerSaturation = SAN_PER_SATURATION.get();
+        MinEffectiveSaturationForSan = MIN_EFFECTIVE_SATURATION_FOR_SAN.get();
+        MaxEffectiveSaturationForSan = MAX_EFFECTIVE_SATURATION_FOR_SAN.get();
+        CookBaseSeconds = COOK_BASE_SECONDS.get();
+        CookSaturationPerStep = COOK_SATURATION_PER_STEP.get();
+        CookSecondsPerStep = COOK_SECONDS_PER_STEP.get();
+        CookSaturationPerLevel = COOK_SATURATION_PER_LEVEL.get();
 
-        // convert the list of strings into a set of items
-        items = ITEM_STRINGS.get().stream()
-                .map(itemName -> ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(itemName)))
-                .collect(Collectors.toSet());
     }
 }

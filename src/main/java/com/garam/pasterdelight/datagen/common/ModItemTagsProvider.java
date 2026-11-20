@@ -105,8 +105,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.FIG_PIE_SLICE.get());
 
         // 带有该标签的食物走 san 恢复系统：把农夫乐事的 meals 标签整包纳入
-        tag(ModItemTags.PASTERDELIGHT_RECOVER_SANITY)
+        tag(ModItemTags.RECOVER_SANITY)
                 .addOptionalTag(ResourceLocation.fromNamespaceAndPath("farmersdelight", "meals"))
+                .addOptionalTag(ResourceLocation.fromNamespaceAndPath("farmersdelight", "snacks"));
+
+        tag(ModItemTags.GIVE_COOK_BUFF)
                 .addOptionalTag(ResourceLocation.fromNamespaceAndPath("farmersdelight", "snacks"));
     }
 }
