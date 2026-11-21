@@ -8,6 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.level.Level;
@@ -22,6 +23,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import vectorwing.farmersdelight.common.block.SkilletBlock;
 import vectorwing.farmersdelight.common.block.entity.SkilletBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModSounds;
+import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import java.util.Optional;
 
@@ -31,6 +33,7 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
     public IItemHandler itemHandler = new PasterDelightSkilletItemHandler(this);
     public Optional<CampfireCookingRecipe> recipe = Optional.empty();
     public ItemStack resultStack;
+    SkilletBlockEntityAccessor skilletBlockEntityAccessor = (SkilletBlockEntityAccessor)this;
 
     public PasterDelightSkilletBlockEntity(BlockEntityType blockEntityType, BlockPos blockPosition, BlockState blockState)
     {
@@ -60,7 +63,7 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
     {
         if (!itemStack.isEmpty())
         {
-            Optional<CampfireCookingRecipe> foundedRecipe = ((SkilletBlockEntityAccessor)this).getMatchingRecipeInvoker(new SimpleContainer(itemStack));
+            Optional<CampfireCookingRecipe> foundedRecipe = skilletBlockEntityAccessor.getMatchingRecipeInvoker(new SimpleContainer(itemStack));
             if (!foundedRecipe.isEmpty())
             {
                 if (!simulate)
@@ -69,7 +72,7 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
 
                     if (remainder.getCount() < itemStack.getCount())
                     {
-                        ((SkilletBlockEntityAccessor)this).setCookingTimeTotalAccessor(SkilletBlock.getSkilletCookingTime(foundedRecipe.get().getCookingTime(), ((SkilletBlockEntityAccessor)this).fireAspectLevelAccessor()));
+                        skilletBlockEntityAccessor.setCookingTimeTotalAccessor(SkilletBlock.getSkilletCookingTime(foundedRecipe.get().getCookingTime(), skilletBlockEntityAccessor.fireAspectLevelAccessor()));
 
                         if (level != null && isHeated(level, getBlockPos()))
                         {
@@ -98,7 +101,7 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
 
     public boolean hasCookingRecipe(ItemStack stack)
     {
-        return !stack.isEmpty() && ((SkilletBlockEntityAccessor)this).getMatchingRecipeInvoker(new SimpleContainer(stack)).isPresent();
+        return !stack.isEmpty() && skilletBlockEntityAccessor.getMatchingRecipeInvoker(new SimpleContainer(stack)).isPresent();
     }
 
     public ItemStack getOutputStack()
@@ -138,9 +141,9 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
         {
             if (recipe.isEmpty())
             {
-                ((SkilletBlockEntityAccessor)this).setCookingTimeAccessor(0);
+                skilletBlockEntityAccessor.setCookingTimeAccessor(0);
                 SimpleContainer wrapper = new SimpleContainer(cookingStack);
-                recipe = ((SkilletBlockEntityAccessor)this).getMatchingRecipeInvoker(wrapper);
+                recipe = skilletBlockEntityAccessor.getMatchingRecipeInvoker(wrapper);
                 if(recipe.isPresent())
                 {
                     resultStack = recipe.get().assemble(wrapper, level.registryAccess());
@@ -152,11 +155,11 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
             }
                 else
                 {
-                    ((SkilletBlockEntityAccessor)this).setCookingTimeAccessor(((SkilletBlockEntityAccessor)this).getCookingTimeAccessor() + 1);
+                    skilletBlockEntityAccessor.setCookingTimeAccessor(skilletBlockEntityAccessor.getCookingTimeAccessor() + 1);
 
-                    if (((SkilletBlockEntityAccessor)this).getCookingTimeAccessor() >= ((SkilletBlockEntityAccessor)this).cookingTimeTotalAccessor())
+                    if (skilletBlockEntityAccessor.getCookingTimeAccessor() >= skilletBlockEntityAccessor.cookingTimeTotalAccessor())
                     {
-                        ((SkilletBlockEntityAccessor)this).setCookingTimeAccessor(0);
+                        skilletBlockEntityAccessor.setCookingTimeAccessor(0);
                         recipe = Optional.empty();
 
                         if(outputItemStack.isEmpty())
@@ -173,6 +176,41 @@ public class PasterDelightSkilletBlockEntity extends SkilletBlockEntity
                     }
                 }
         }
+    }
+
+    @Override
+    public ItemStack addItemToCook(ItemStack addedStack, Player player)
+    {
+        Optional<CampfireCookingRecipe> recipe = skilletBlockEntityAccessor.getMatchingRecipeInvoker(new SimpleContainer(addedStack));
+        if (recipe.isPresent())
+        {
+            if (getBlockState().getValue(SkilletBlock.WATERLOGGED))
+            {
+                player.displayClientMessage(TextUtils.block("skillet.underwater"), true);
+                return addedStack;
+            }
+
+            skilletBlockEntityAccessor.setCookingTimeTotalAccessor(SkilletBlock.getSkilletCookingTime(recipe.get().getCookingTime(), skilletBlockEntityAccessor.fireAspectLevelAccessor()));
+            boolean wasEmpty = getStoredStack().isEmpty();
+            ItemStack remainderStack = skilletBlockEntityAccessor.inventoryAccessor().insertItem(0, addedStack.copy(), false);
+            if (wasEmpty && !ItemStack.matches(remainderStack, addedStack))
+            {
+                skilletBlockEntityAccessor.setLastRecipeIDAccessor(recipe.get().getId());
+                skilletBlockEntityAccessor.setCookingTimeAccessor(0);
+                if (wasEmpty && level != null && isHeated(level, worldPosition))
+                {
+                    level.playSound(null, worldPosition.getX() + 0.5F, worldPosition.getY() + 0.5F, this.worldPosition.getZ() + 0.5F, ModSounds.BLOCK_SKILLET_ADD_FOOD.get(), SoundSource.BLOCKS, 0.8F, 1.0F);
+                }
+
+                return remainderStack;
+            }
+        }
+            else
+            {
+                player.displayClientMessage(TextUtils.block("skillet.invalid_item"), true);
+            }
+
+        return addedStack;
     }
 
     @Override

@@ -9,9 +9,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(BlockEntity.class)
 public interface BlockEntityAccessor
 {
-    @Accessor("type")
-    BlockEntityType<?> pasterdelight$getType();
-
     @Mutable
     @Accessor("type")
     void pasterdelight$setType(BlockEntityType<?> type);
